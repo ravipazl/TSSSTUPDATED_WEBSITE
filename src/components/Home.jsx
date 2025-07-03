@@ -56,9 +56,9 @@ const Home = () => {
       {/* Bottom Left Dotted Shape */}
       <div style={{
         position: "absolute",
-        width: getResponsiveSize("40px", "60px", "80px", "100px"),
-        height: getResponsiveSize("40px", "60px", "80px", "100px"),
-        bottom: getResponsiveSize("15px", "20px", "25px", "30px"),
+        width: getResponsiveSize("60px", "80px", "100px", "120px"),
+        height: getResponsiveSize("60px", "80px", "100px", "120px"),
+        bottom: getResponsiveSize("-10px", "-15px", "-20px", "-25px"),
         left: getResponsiveSize("15px", "20px", "25px", "30px"),
         pointerEvents: "none",
         zIndex: 1
@@ -73,9 +73,9 @@ const Home = () => {
       {/* Top Right Dotted Shape */}
       <div style={{
         position: "absolute",
-        width: getResponsiveSize("40px", "60px", "80px", "100px"),
-        height: getResponsiveSize("40px", "60px", "80px", "100px"),
-        top: getResponsiveSize("15px", "20px", "25px", "30px"),
+        width: getResponsiveSize("60px", "80px", "100px", "120px"),
+        height: getResponsiveSize("60px", "80px", "100px", "120px"),
+        top: getResponsiveSize("-5px", "-10px", "-15px", "-20px"),
         right: getResponsiveSize("15px", "20px", "25px", "30px"),
         pointerEvents: "none",
         zIndex: 1
@@ -240,13 +240,12 @@ const Home = () => {
             flexDirection: "column",
             justifyContent: "space-between",
             alignItems: "center",
-            height: getResponsiveSize("350px", "400px", "450px", "500px"),
+            height: getResponsiveSize("350px", "450px", "500px", "550px"),
             width: getResponsiveSize("120px", "150px", "180px", "200px"),
-            padding: getResponsiveSize("20px 0", "25px 0", "30px 0", "40px 0"),
             order: 2,
             zIndex: 3,
             position: "relative",
-            flexShrink: 0
+            flexShrink: 0,
           }}>
             {/* Star 1 - Top Right */}
             <div style={{
@@ -323,7 +322,7 @@ const Home = () => {
         {/* Right Column - Rectangle and Background Image */}
         <div style={{
           flex: isMobile ? "none" : "1",
-          width: isMobile ? "100%" : "auto",
+          width: isMobile ? "80%" : "auto",
           maxWidth: isMobile ? "100%" : getResponsiveSize("350px", "400px", "450px", "500px"),
           position: "relative",
           display: "flex",
@@ -346,7 +345,7 @@ const Home = () => {
           <img src={rectangleImg} alt="Main product visual" style={{ 
             width: getResponsiveSize("65%", "60%", "55%", "60%"),
             height: "auto",
-            maxHeight: "90%",
+            maxHeight: "100%",
             objectFit: "contain",
             position: "relative",
             zIndex: 1

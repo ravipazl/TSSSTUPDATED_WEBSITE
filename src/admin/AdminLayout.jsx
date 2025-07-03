@@ -103,14 +103,6 @@ const AdminLayout = ({ children }) => {
       >
         <div style={styles.sidebarHeader}>
           <h2 style={styles.sidebarTitle}>TSSST Admin</h2>
-          {isMobile && (
-            <button 
-              onClick={toggleSidebar} 
-              style={styles.closeButton}
-            >
-              <FaTimes />
-            </button>
-          )}
         </div>
 
         <div style={styles.navItems}>
@@ -217,7 +209,7 @@ const styles = {
     margin: 0,
     fontSize: "1.5rem",
     fontWeight: "bold",
-    color: "#FF6B00",
+    color: "#FF3131",
   },
   closeButton: {
     background: "none",
@@ -241,7 +233,7 @@ const styles = {
   },
   activeNavItem: {
     backgroundColor: "#34495e",
-    borderLeft: "4px solid #FF6B00",
+    borderLeft: "4px solid #FF3131",
   },
   navIcon: {
     marginRight: "15px",
@@ -313,7 +305,7 @@ const styles = {
   logoutHeaderButton: {
     background: "none",
     border: "none",
-    color: "#FF6B00",
+    color: "#FF3131",
     fontSize: "1rem",
     cursor: "pointer",
     display: "flex",

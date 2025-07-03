@@ -13,9 +13,7 @@ function Mobile() {
       textAlign: "center",
     },
     topText: {
-       background: "linear-gradient(135deg, #ff3e00, #ff6a00)",
-      WebkitBackgroundClip: "text",
-      WebkitTextFillColor: "transparent",
+      color: "#FF3131",
       fontSize: "16px",
       fontWeight: "500",
      

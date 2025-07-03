@@ -261,7 +261,7 @@ const Configsettings = () => {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            border: "1px solid #FF6B00",
+            border: "1px solid #FF3131",
             borderRadius: "6px",
             padding: "8px 12px",
             cursor: "pointer",
@@ -270,7 +270,7 @@ const Configsettings = () => {
             boxSizing: "border-box",
             fontSize: "14px",
             fontWeight: "500",
-            color: "#FF6B00",
+            color: "#FF3131",
             transition: "all 0.2s ease",
           }}
         >
@@ -278,7 +278,7 @@ const Configsettings = () => {
           <IoMdArrowDropdown
             style={{
               fontSize: "20px",
-              color: "#FF6B00",
+              color: "#FF3131",
               marginLeft: "5px",
               flexShrink: 0,
             }}
@@ -292,7 +292,7 @@ const Configsettings = () => {
               left: 0,
               right: 0,
               backgroundColor: "#fff",
-              border: "1px solid #FF6B00",
+              border: "1px solid #FF3131",
               borderRadius: "8px",
               maxHeight: "150px",
               overflowY: "auto",
@@ -317,10 +317,10 @@ const Configsettings = () => {
                   transition: "all 0.2s ease",
                   fontSize: "14px",
                   fontWeight: opt.value === value ? "500" : "400",
-                  color: "#FF6B00",
+                  color: "#FF3131",
                   borderLeft:
                     opt.value === value
-                      ? "3px solid #FF6B00"
+                      ? "3px solid #FF3131"
                       : "3px solid transparent",
                 }}
                 onMouseOver={(e) => {
@@ -342,7 +342,7 @@ const Configsettings = () => {
                   {opt.value === value && (
                     <IoMdCheckmark
                       style={{
-                        color: "#FF6B00",
+                        color: "#FF3131",
                         fontSize: "18px",
                         marginLeft: "auto",
                       }}
@@ -377,7 +377,7 @@ const Configsettings = () => {
     padding: "8px 16px",
     borderRadius: "6px",
     border: "none",
-    backgroundColor: "#FF6B00",
+    backgroundColor: "#FF3131",
     color: "#fff",
     fontWeight: "bold",
     cursor: "pointer",
@@ -426,7 +426,7 @@ const Configsettings = () => {
     borderRadius: "8px",
     width: "400px",
     position: "relative",
-    border: "1px solid #FF6B00",
+    border: "1px solid #FF3131",
   };
 
   return (
@@ -481,12 +481,12 @@ const Configsettings = () => {
                 width: "100%",
                 padding:
                   "8px 8px 8px 32px" /* Added left padding for the icon */,
-                border: "1px solid #FF6B00",
+                border: "1px solid #FF3131",
                 borderRadius: "6px",
                 height: "30px" /* Match height with dropdowns */,
                 boxSizing: "border-box",
                 fontSize: "14px",
-                color: "#FF6B00",
+                color: "#FF3131",
                 outline: "none",
               }}
             />
@@ -495,7 +495,7 @@ const Configsettings = () => {
             onClick={() => setIsCreateModalOpen(true)}
             style={{
               ...buttonStyle,
-              backgroundColor: "#FF6B00",
+              backgroundColor: "#FF3131",
               color: "white",
               border: "none",
               padding: "8px 16px",
@@ -508,10 +508,12 @@ const Configsettings = () => {
               boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
             }}
             onMouseOver={(e) => {
-              e.currentTarget.style.backgroundColor = "#e66000";
+              e.currentTarget.style.backgroundColor = "white";
+              e.currentTarget.style.color = "#FF3131";
             }}
             onMouseOut={(e) => {
-              e.currentTarget.style.backgroundColor = "#FF6B00";
+              e.currentTarget.style.backgroundColor = "#FF3131";
+              e.currentTarget.style.color = "white";
             }}
           >
             Add New
@@ -548,7 +550,7 @@ const Configsettings = () => {
                   width: "40px",
                   height: "40px",
                   border: "4px solid #f3f3f3",
-                  borderTop: "4px solid #FF6B00",
+                  borderTop: "4px solid #FF3131",
                   borderRadius: "50%",
                   animation: "spin 1s linear infinite",
                   marginBottom: "15px",
@@ -568,7 +570,7 @@ const Configsettings = () => {
             <table style={tableStyle}>
               <thead
                 style={{
-                  backgroundColor: "#FF6B00",
+                  backgroundColor: "#FF3131",
                   color: "white",
                   position: "sticky",
                   top: 0,
@@ -577,7 +579,7 @@ const Configsettings = () => {
               >
                 <tr
                   style={{
-                    backgroundColor: "#FF6B00",
+                    backgroundColor: "#FF3131",
                     color: "white",
                     textAlign: "center",
                   }}
@@ -681,14 +683,18 @@ const Configsettings = () => {
                               onClick={() => openEditModal(item)}
                               style={{
                                 ...actionButton,
-                                backgroundColor: "#FF6B00",
+                                backgroundColor: "#FF3131",
                                 color: "#fff",
                               }}
                               onMouseOver={(e) => {
                                 e.currentTarget.style.opacity = "0.9";
+                                e.currentTarget.style.backgroundColor = "white";
+                                e.currentTarget.style.color = "#FF3131";
                               }}
                               onMouseOut={(e) => {
                                 e.currentTarget.style.opacity = "1";
+                                e.currentTarget.style.backgroundColor = "#FF3131";
+                                e.currentTarget.style.color = "#fff";
                               }}
                             >
                               Edit
@@ -702,9 +708,13 @@ const Configsettings = () => {
                               }}
                               onMouseOver={(e) => {
                                 e.currentTarget.style.opacity = "0.9";
+                                e.currentTarget.style.backgroundColor = "white";
+                                e.currentTarget.style.color = "#FF3131";
                               }}
                               onMouseOut={(e) => {
                                 e.currentTarget.style.opacity = "1";
+                                e.currentTarget.style.backgroundColor = "#FF3131";
+                                e.currentTarget.style.color = "#fff";
                               }}
                             >
                               Delete
@@ -742,7 +752,7 @@ const Configsettings = () => {
                 alignItems: "center",
                 gap: "10px",
                 backgroundColor: "transparent",
-                color: "#FF6B00",
+                color: "#FF3131",
                 padding: "6px 12px",
                 borderRadius: "8px",
               }}
@@ -751,7 +761,7 @@ const Configsettings = () => {
                 style={{
                   fontSize: "14px",
                   fontWeight: "500",
-                  color: "#FF6B00",
+                  color: "#FF3131",
                   whiteSpace: "nowrap",
                   marginRight: "5px",
                 }}
@@ -779,7 +789,7 @@ const Configsettings = () => {
                 alignItems: "center",
                 gap: "10px",
                 backgroundColor: "transparent",
-                color: "#FF6B00",
+                color: "#FF3131",
                 padding: "6px 12px",
                 borderRadius: "8px",
               }}
@@ -789,8 +799,8 @@ const Configsettings = () => {
                 disabled={currentPage === 1}
                 style={{
                   backgroundColor: "transparent",
-                  color: "#FF6B00",
-                  border: "1px solid #FF6B00",
+                  color: "#FF3131",
+                  border: "1px solid #FF3131",
                   padding: "4px 10px",
                   borderRadius: "4px",
                   cursor: currentPage === 1 ? "not-allowed" : "pointer",
@@ -804,7 +814,7 @@ const Configsettings = () => {
                 style={{
                   fontWeight: "bold",
                   fontSize: "14px",
-                  color: "#FF6B00",
+                  color: "#FF3131",
                 }}
               >
                 Page {currentPage} of {1}
@@ -814,8 +824,8 @@ const Configsettings = () => {
                 disabled={currentPage === 1}
                 style={{
                   backgroundColor: "transparent",
-                  color: "#FF6B00",
-                  border: "1px solid #FF6B00",
+                  color: "#FF3131",
+                  border: "1px solid #FF3131",
                   padding: "4px 10px",
                   borderRadius: "4px",
                   cursor: currentPage === 1 ? "not-allowed" : "pointer",
@@ -909,9 +919,9 @@ const Configsettings = () => {
                 style={{
                   padding: "8px 16px",
                   borderRadius: "4px",
-                  border: "1px solid #FF6B00",
+                  border: "1px solid #FF3131",
                   backgroundColor: "transparent",
-                  color: "#FF6B00",
+                  color: "#FF3131",
                   cursor: "pointer",
                   fontWeight: "500",
                   fontSize: "14px",

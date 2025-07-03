@@ -160,7 +160,7 @@ const ConfigSettingModal = ({
     width: "100%",
     padding: "8px 12px",
     borderRadius: "6px",
-    border: "1px solid #FF6B00",
+    border: "1px solid #FF3131",
     marginBottom: "10px",
     boxSizing: "border-box",
     fontSize: "14px",
@@ -182,9 +182,9 @@ const ConfigSettingModal = ({
   const cancelButtonStyle = {
     padding: "8px 16px",
     borderRadius: "4px",
-    border: "1px solid #FF6B00",
+    border: "1px solid #FF3131",
     backgroundColor: "transparent",
-    color: "#FF6B00",
+    color: "#FF3131",
     cursor: "pointer",
     fontWeight: "500",
     fontSize: "14px",
@@ -195,7 +195,7 @@ const ConfigSettingModal = ({
     padding: "8px 16px",
     borderRadius: "4px",
     border: "none",
-    backgroundColor: "#FF6B00",
+    backgroundColor: "#FF3131",
     color: "#fff",
     fontWeight: "bold",
     cursor: "pointer",
@@ -209,7 +209,7 @@ const ConfigSettingModal = ({
     position: "absolute",
     right: "10px",
     top: "10px",
-    background: "#FF6B00",
+    background: "#FF3131",
     border: "none",
     borderRadius: "4px",
     padding: "4px 8px",
@@ -331,7 +331,7 @@ const ConfigSettingModal = ({
                     ...inputStyle,
                     height: "200px",
                     fontFamily: "monospace",
-                    border: jsonError ? "1px solid #f44336" : "1px solid #FF6B00",
+                    border: jsonError ? "1px solid #f44336" : "1px solid #FF3131",
                     backgroundColor: "#f8f8f8",
                     resize: "vertical",
                   }}
@@ -373,11 +373,15 @@ const ConfigSettingModal = ({
               style={cancelButtonStyle}
               disabled={isSubmitting}
               onMouseOver={(e) => {
-                e.currentTarget.style.backgroundColor = "#fff4ee";
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.backgroundColor = "transparent";
-              }}
+              e.currentTarget.style.backgroundColor = "white";
+              e.currentTarget.style.color = "#FF3131";
+              e.currentTarget.style.border = "1px solid #FF3131";
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.backgroundColor = "#FF3131";
+              e.currentTarget.style.color = "white";
+              e.currentTarget.style.border = "1px solid #fff";
+            }}
             >
               Cancel
             </button>
@@ -386,11 +390,15 @@ const ConfigSettingModal = ({
               style={submitButtonStyle} 
               disabled={isSubmitting}
               onMouseOver={(e) => {
-                e.currentTarget.style.backgroundColor = "#e66000";
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.backgroundColor = "#FF6B00";
-              }}
+              e.currentTarget.style.backgroundColor = "white";
+              e.currentTarget.style.color = "#FF3131";
+              e.currentTarget.style.border = "1px solid #FF3131";
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.backgroundColor = "#FF3131";
+              e.currentTarget.style.color = "white";
+              e.currentTarget.style.border = "1px solid #fff";
+            }}
             >
               {isSubmitting
                 ? isEditing
