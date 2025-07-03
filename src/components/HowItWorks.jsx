@@ -178,6 +178,7 @@ const HowItWorks = () => {
 
   return (
     <section id="how-it-works" style={{...styles.container, ...responsiveStyles.container}}>
+      <div style={{height:"100px",width:"100%"}}></div>
       <p style={{...styles.subheading, ...responsiveStyles.subheading}}>HOW IT WORKS</p>
       <h2 style={{...styles.heading, ...responsiveStyles.heading}}>
         Get Started With 3 Easy Steps to <br /> Secure Calling
@@ -233,7 +234,7 @@ const styles = {
     boxSizing: 'border-box',
   },
   subheading: {
-    color: '#ff3e00',
+    color: '#FF3131',
     fontWeight: 'bold',
     fontSize: '14px',
     marginBottom: '10px',
@@ -287,7 +288,7 @@ const styles = {
   dottedLine: {
     width: '100%',
     height: '3px',
-    borderTop: '3px dashed #ff3e00',
+    borderTop: '3px dashed #FF3131',
   },
   circle: {
     background: ' #FF3131',

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import logoImg from '../assets/logo.png';
 import LoginModal from './LoginModal';
 import { color } from 'chart.js/helpers';
-
+ 
 const Navbar = () => {
   const [hoveredLink, setHoveredLink] = useState(null);
   const [isDownloadHovered, setIsDownloadHovered] = useState(false);
@@ -13,14 +13,14 @@ const Navbar = () => {
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
   const [isIOS, setIsIOS] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-  
+ 
   // Detect iOS device on component mount
   useEffect(() => {
     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
     const isIOSDevice = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
     setIsIOS(isIOSDevice);
   }, []);
-
+ 
   // Update window width when resized
   useEffect(() => {
     const handleResize = () => {
@@ -29,20 +29,20 @@ const Navbar = () => {
         setIsMobileMenuOpen(false);
       }
     };
-
+ 
     let timeoutId;
     const debouncedResize = () => {
       clearTimeout(timeoutId);
       timeoutId = setTimeout(handleResize, 100);
     };
-
+ 
     window.addEventListener('resize', debouncedResize);
     return () => {
       window.removeEventListener('resize', debouncedResize);
       clearTimeout(timeoutId);
     };
   }, []);
-
+ 
   const scrollToSection = (sectionId) => {
     const section = document.getElementById(sectionId);
     if (section) {
@@ -52,7 +52,7 @@ const Navbar = () => {
       }
     }
   };
-
+ 
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
@@ -62,11 +62,11 @@ const Navbar = () => {
         howItWorks: document.getElementById('how-it-works'),
         testimonials: document.getElementById('testimonials'),
       };
-
+ 
       const positions = Object.fromEntries(
         Object.entries(sections).map(([key, el]) => [key, el?.offsetTop || 0])
       );
-
+ 
       if (scrollPosition < positions.features - 100) {
         setActiveSection('home');
       } else if (scrollPosition < positions.howItWorks - 100) {
@@ -77,11 +77,11 @@ const Navbar = () => {
         setActiveSection('testimonials');
       }
     };
-
+ 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
+ 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (windowWidth <= 768) {
@@ -91,7 +91,7 @@ const Navbar = () => {
       document.body.style.overflow = 'auto';
     };
   }, [isMobileMenuOpen, windowWidth]);
-
+ 
   // Base styles
   const baseStyles = {
     navbar: {
@@ -118,6 +118,7 @@ const Navbar = () => {
     logoImage: {
       height: '40px',
       width: 'auto',
+      zIndex: 0, // Ensure logo is above other elements
     },
     nav: {
       display: 'flex',
@@ -163,7 +164,7 @@ const Navbar = () => {
     hamburgerLine: {
       width: windowWidth < 360 ? '22px' : '25px',
       height: '3px',
-      backgroundColor: '#333',
+      backgroundColor: '#fff',
       transition: 'all 0.3s ease',
     },
     overlay: {
@@ -173,7 +174,7 @@ const Navbar = () => {
       right: 0,
       bottom: 0,
       backgroundColor: 'rgba(0,0,0,0.3)',
-      zIndex: 90,
+      zIndex: 110,
     },
     mobileMenuClose: {
       position: 'absolute',
@@ -203,7 +204,7 @@ const Navbar = () => {
       fontWeight: '500',
       borderRadius: '6px',
       transition: 'all 0.3s ease',
-      color: '#FFFFFF',
+      color: '#FFFFF',
     },
     mobileDownloadBtn: {
       marginTop: '20px',
@@ -213,10 +214,11 @@ const Navbar = () => {
       fontSize: '16px',
       fontWeight: 'bold',
       borderRadius: '6px',
-      background: 'linear-gradient(90deg, #FF3131 0%, #FF6B00 98.5%)',
+      background: '#FF3131',
       color: '#fff',
       textDecoration: 'none',
     },
+   
     mobileLoginBtn: {
       marginTop: '20px',
       padding: '12px 24px',
@@ -225,13 +227,14 @@ const Navbar = () => {
       fontSize: '16px',
       fontWeight: 'bold',
       borderRadius: '6px',
-      background: 'transparent',
-      color: '#333',
+      background: '#FF3131',
+      color: '#fff',
       textDecoration: 'none',
-      border: '2px solid #ddd',
+      border: '2px solid white',
+      transition: 'all 0.3s ease',
     },
   };
-
+ 
   // Get responsive styles based on window width
   const getResponsiveStyles = () => {
     // Mobile styles (under 768px)
@@ -252,7 +255,7 @@ const Navbar = () => {
           alignItems: 'center',
           transform: isMobileMenuOpen ? 'translateY(0)' : 'translateY(-100%)',
           transition: 'transform 0.3s ease',
-          zIndex: 100,
+          zIndex: 110,
           boxShadow: '0 4px 10px rgba(0,0,0,0.1)',
           overflowY: 'auto',
         },
@@ -266,6 +269,7 @@ const Navbar = () => {
           display: isMobileMenuOpen ? 'none' : 'block',
           padding: windowWidth < 360 ? '8px 12px' : '8px 16px',
           fontSize: windowWidth < 360 ? '13px' : '14px',
+         
         },
         loginBtn: {
           display: isMobileMenuOpen ? 'none' : 'block',
@@ -274,7 +278,7 @@ const Navbar = () => {
         },
       };
     }
-    
+   
     // Tablet styles (768px - 1024px)
     if (windowWidth > 768 && windowWidth <= 1024) {
       return {
@@ -290,6 +294,7 @@ const Navbar = () => {
         downloadBtn: {
           padding: '8px 16px',
           fontSize: '14px',
+          // Hover styles will be applied directly in the component
         },
         loginBtn: {
           padding: '8px 16px',
@@ -297,17 +302,17 @@ const Navbar = () => {
         },
       };
     }
-    
+   
     // Default styles (desktop)
     return {};
   };
-
+ 
   const responsiveStyles = getResponsiveStyles();
-  
+ 
   const getNavLinkStyle = (linkName) => {
     const isHovered = hoveredLink === linkName;
     const isActive = activeSection === linkName;
-    
+   
     // Base style for all screen sizes
     const linkStyle = {
       ...baseStyles.navLink,
@@ -315,7 +320,7 @@ const Navbar = () => {
       borderBottom: isHovered || isActive ? '2px solid white' : '2px solid transparent',
       transition: 'all 0.3s ease',
     };
-    
+   
     // Mobile specific styles
     if (windowWidth <= 768) {
       return {
@@ -326,14 +331,17 @@ const Navbar = () => {
         margin: '5px 0',
         fontSize: '18px',
         borderBottom: '2px solid transparent',
-        backgroundColor: isHovered || isActive ? 'rgba(255, 49, 49, 0.1)' : 'transparent',
+        backgroundColor: isHovered || isActive ? 'white' : '#FF3131',
+        color: isHovered || isActive ? '#FF3131' : '#FFFFFF',
+        boxShadow: isHovered || isActive ? '0 4px 10px rgba(0, 0, 0, 0.1)' : 'none',
+        textDecoration: 'none',
         borderRadius: '6px',
       };
     }
-    
+   
     return linkStyle;
   };
-
+ 
   return (
     <>
       <LoginModal isOpen={isLoginModalOpen} onClose={() => setIsLoginModalOpen(false)} />
@@ -342,7 +350,7 @@ const Navbar = () => {
         <div style={{...baseStyles.logoContainer, ...responsiveStyles.logoContainer}}>
           <img src={logoImg} alt="Logo" style={baseStyles.logoImage} />
         </div>
-
+ 
         {!isMobileMenuOpen && (
           <div
             style={{...baseStyles.hamburger, ...responsiveStyles.hamburger}}
@@ -361,24 +369,24 @@ const Navbar = () => {
             <div style={baseStyles.hamburgerLine} />
           </div>
         )}
-
+ 
         {isMobileMenuOpen && windowWidth <= 768 && (
           <div
             style={baseStyles.overlay}
             onClick={() => setIsMobileMenuOpen(false)}
           />
         )}
-
+ 
         <nav style={{...baseStyles.nav, ...responsiveStyles.nav}}>
           {windowWidth <= 768 && (
-            <div 
+            <div
               style={baseStyles.mobileMenuClose}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               ×
             </div>
           )}
-          
+         
           <div style={windowWidth <= 768 ? baseStyles.mobileNavContainer : { display: 'flex', gap: '20px' }}>
             {['home', 'features', 'howItWorks', 'testimonials'].map((section) => (
               <a
@@ -397,23 +405,34 @@ const Navbar = () => {
                   : section.charAt(0).toUpperCase() + section.slice(1)}
               </a>
             ))}
-            
+           
             {/* Show buttons inside mobile menu */}
             {windowWidth <= 768 && (
               <>
-
+ 
                 <a
-                  href={isIOS 
+                  href={isIOS
                     ? "https://apps.apple.com/us/app/tssst/id6745514901"
                     : "https://play.google.com/store/apps/details?id=com.pazl.buzzApp"
                   }
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={baseStyles.mobileDownloadBtn}
+                  style={{
+                    ...baseStyles.mobileDownloadBtn,
+                    background: isDownloadHovered ? "white" : "#FF3131",
+                    color: isDownloadHovered ? "#FF3131" : "#fff",
+                    border: isDownloadHovered ? "2px solid transparent" : "2px solid white",
+                    transform: isDownloadHovered ? 'translateY(-2px)' : 'translateY(0)',
+                    boxShadow: isDownloadHovered
+                      ? '0 6px 15px rgba(255, 49, 49, 0.25)'
+                      : '0 4px 10px rgba(255, 49, 49, 0.15)',
+                  }}
+                  onMouseEnter={() => setIsDownloadHovered(true)}
+                  onMouseLeave={() => setIsDownloadHovered(false)}
                 >
                   Download App
                 </a>
-                
+               
                 <button
                   onClick={() => {
                     setIsMobileMenuOpen(false);
@@ -421,30 +440,30 @@ const Navbar = () => {
                   }}
                   style={{
                     ...baseStyles.mobileLoginBtn,
-                    border: '2px solid #FF3131',
-                    color: '#FF3131',
-                    marginTop: '10px',
-                    textDecoration: 'none',
-                    display: 'block',
-                    textAlign: 'center',
-                    width: '80%',
-                    background: 'transparent',
-                    cursor: 'pointer',
+                    background: isLoginHovered ? "white" : "#FF3131",
+                    color: isLoginHovered ? "#FF3131" : "#fff",
+                    border: isLoginHovered ? "2px solid transparent" : "2px solid white",
+                    transform: isLoginHovered ? 'translateY(-2px)' : 'translateY(0)',
+                    boxShadow: isLoginHovered
+                      ? '0 6px 15px rgba(255, 49, 49, 0.25)'
+                      : '0 4px 10px rgba(255, 49, 49, 0.15)',
                   }}
+                  onMouseEnter={() => setIsLoginHovered(true)}
+                  onMouseLeave={() => setIsLoginHovered(false)}
                 >
                   Admin Login
                 </button>
-                
+               
               </>
             )}
           </div>
         </nav>
-
+ 
         {/* Show buttons outside mobile menu on desktop */}
         {windowWidth > 768 && (
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <a
-              href={isIOS 
+              href={isIOS
                 ? "https://apps.apple.com/us/app/tssst/id6745514901"
                 : "https://play.google.com/store/apps/details?id=com.pazl.buzzApp"
               }
@@ -474,11 +493,11 @@ const Navbar = () => {
                 ...responsiveStyles.loginBtn,
                 background: isLoginHovered ? 'white' : 'transparent',
                 color: isLoginHovered ? '#FF3131' : 'white',
-                border: isLoginHovered ? '2px solid #ddd' : '2px solid #ddd',
+                border: isLoginHovered ? '2px solid transparent' : '2px solid white',
                 transform: isLoginHovered ? 'translateY(-2px)' : 'translateY(0)',
                 boxShadow: isLoginHovered
-                  ? '0 4px 10px rgba(0, 0, 0, 0.1)'
-                  : 'none',
+                  ? '0 6px 15px rgba(255, 49, 49, 0.25)'
+                  : '0 4px 10px rgba(255, 49, 49, 0.15)',
                 textDecoration: 'none',
                 cursor: 'pointer',
               }}
@@ -494,5 +513,6 @@ const Navbar = () => {
     </>
   );
 };
-
+ 
 export default Navbar;
+ 

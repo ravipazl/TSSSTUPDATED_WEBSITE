@@ -259,6 +259,16 @@ const AddAppReleaseModal = ({ isOpen,setIsModalOpen, onClose, initialData = null
                 opacity: isSubmitting ? 0.7 : 1,
                 cursor: isSubmitting ? "not-allowed" : "pointer"
               }}
+              onMouseOver={(e) => {
+              e.currentTarget.style.backgroundColor = "white";
+              e.currentTarget.style.color = "#FF3131";
+              e.currentTarget.style.border = "1px solid #FF3131";
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.backgroundColor = "#FF3131";
+              e.currentTarget.style.color = "white";
+              e.currentTarget.style.border = "1px solid #fff";
+            }}
               disabled={isSubmitting}
             >
               Cancel
@@ -270,6 +280,16 @@ const AddAppReleaseModal = ({ isOpen,setIsModalOpen, onClose, initialData = null
                 opacity: isSubmitting ? 0.7 : 1,
                 cursor: isSubmitting ? "not-allowed" : "pointer"
               }}
+              onMouseOver={(e) => {
+              e.currentTarget.style.backgroundColor = "white";
+              e.currentTarget.style.color = "#FF3131";
+              e.currentTarget.style.border = "1px solid #FF3131";
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.backgroundColor = "#FF3131";
+              e.currentTarget.style.color = "white";
+              e.currentTarget.style.border = "1px solid #fff";
+            }}
               disabled={isSubmitting}
             >
               {isSubmitting ? (
@@ -316,7 +336,7 @@ const modalStyles = {
     width: "100%",
     padding: "8px 12px",
     borderRadius: "6px",
-    border: "1px solid #FF6B00",
+    border: "1px solid #FF3131",
     marginBottom: "10px",
     boxSizing: "border-box",
     fontSize: "14px",
@@ -346,7 +366,7 @@ const submitButtonStyle = {
   padding: "8px 16px",
   borderRadius: "4px",
   border: "none",
-  backgroundColor: "#FF6B00",
+  backgroundColor: "#FF3131",
   color: "#fff",
   fontWeight: "bold",
   cursor: "pointer",

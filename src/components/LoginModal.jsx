@@ -268,7 +268,7 @@ const getResponsiveStyles = () => {
       right: isMobile ? "20px" : isTablet ? "22px" : "25px",
       fontSize: isMobile ? "24px" : isTablet ? "26px" : "28px",
       fontWeight: "bold",
-      color: "#F73531",
+      color: "#FF3131",
       cursor: "pointer",
       zIndex: 1,
       width: isMobile ? "30px" : isTablet ? "32px" : "35px",
@@ -280,10 +280,8 @@ const getResponsiveStyles = () => {
       transition: "background-color 0.2s ease",
     },
     heading: {
+      color: "#FF3131",
       textAlign: "center",
-      background: "linear-gradient(135deg, #ff3e00, #ff6a00)",
-      WebkitBackgroundClip: "text",
-      WebkitTextFillColor: "transparent",
       marginBottom: isMobile ? "25px" : isTablet ? "28px" : "30px",
       fontSize: isMobile ? "24px" : isTablet ? "26px" : "28px",
       fontWeight: "700",
@@ -316,7 +314,7 @@ const getResponsiveStyles = () => {
     button: {
       padding: isMobile ? "14px 18px" : isTablet ? "15px 19px" : "16px 20px",
       fontSize: isMobile ? "16px" : "16px",
-      background: "linear-gradient(135deg, #ff3e00, #ff6a00)",
+      background: "#FF3131",
       color: "#fff",
       border: "none",
       borderRadius: isMobile ? "8px" : isTablet ? "9px" : "10px",
@@ -335,22 +333,22 @@ const getResponsiveStyles = () => {
 const addResponsiveCSS = () => {
   const css = `
     .login-modal-input:focus {
-      border-color: #ff3e00 !important;
-      box-shadow: 0 0 0 3px rgba(255, 62, 0, 0.1) !important;
+      border-color: #FF3131 !important;
+      box-shadow: 0 0 0 3px rgb(243, 177, 177) !important;
     }
     
     .login-modal-input:hover:not(:disabled) {
-      border-color: #ff6a00 !important;
+      border-color: #FF3131 !important;
     }
     
     .login-modal-button:hover:not(:disabled) {
-      background: linear-gradient(135deg, #e63500, #e55a00) !important;
+      background: #FF3131 !important;
       transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(255, 62, 0, 0.3);
+      box-shadow: 0 4px 12px rgb(243, 177, 177);
     }
     
     .login-modal-close:hover {
-      background-color: rgba(247, 53, 49, 0.1) !important;
+      background-color: rgb(243, 177, 177) !important;
     }
     
     @media (max-width: 480px) {

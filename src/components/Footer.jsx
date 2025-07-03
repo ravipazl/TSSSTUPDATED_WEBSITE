@@ -11,6 +11,7 @@ import { color } from "chart.js/helpers";
 function Footer() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [hoveredButton, setHoveredButton] = useState(null);
+  const [hoveredIcon, setHoveredIcon] = useState(null);
  
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
@@ -98,7 +99,17 @@ function Footer() {
       height: isSmallMobile ? "32px" : "36px",
       borderRadius: "50%",
       padding: "5px",
-      border: "1px solid #ffff", // Larger touch target
+      border: "1px solid #ffff",
+      transition: "all 0.3s ease",
+    },
+    iconLink: {
+      color: "#ffff",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      width: "100%",
+      height: "100%",
+      transition: "all 0.3s ease",
     },
     linksSection: {
       display: "flex",
@@ -156,8 +167,8 @@ function Footer() {
                 }}
                 style={{
                   ...styles.btnSecondary,
-                   background: hoveredButton === "getStarted" ? "linear-gradient(90deg, #F73531 0%, #FF6B00 98.5%)" : "linear-gradient(90deg, #F73531 0%, #FF6B00 98.5%)",
-                  color: hoveredButton === 'contact' ? '#fff' : '#fff',
+                   background: hoveredButton === "contact" ? "#ffff" : "#FF3131",
+                  color: hoveredButton === 'contact' ? '#FF3131' : '#ffff',
                   border: hoveredButton === 'contact' ? '2px solid transparent' : '2px solid #F73531',
                 }}
                 onMouseEnter={() => setHoveredButton('contact')}
@@ -168,24 +179,92 @@ function Footer() {
             </div>
           </div>
           <div style={styles.socialIcons}>
-            <span style={styles.icon}>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+            <span
+              style={{
+                ...styles.icon,
+                backgroundColor: hoveredIcon === 'twitter' ? 'white' : 'transparent',
+                transform: hoveredIcon === 'twitter' ? 'translateY(-3px)' : 'translateY(0)',
+                boxShadow: hoveredIcon === 'twitter' ? '0 6px 15px rgba(255, 49, 49, 0.25)' : 'none',
+              }}
+            >
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  ...styles.iconLink,
+                  color: hoveredIcon === 'twitter' ? '#FF3131' : '#ffff',
+                }}
+                onMouseEnter={() => setHoveredIcon('twitter')}
+                onMouseLeave={() => setHoveredIcon(null)}
+              >
                 <FaXTwitter />
               </a>
             </span>
-            <span style={styles.icon}>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+            <span
+              style={{
+                ...styles.icon,
+                backgroundColor: hoveredIcon === 'linkedin' ? 'white' : 'transparent',
+                transform: hoveredIcon === 'linkedin' ? 'translateY(-3px)' : 'translateY(0)',
+                boxShadow: hoveredIcon === 'linkedin' ? '0 6px 15px rgba(255, 49, 49, 0.25)' : 'none',
+              }}
+            >
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  ...styles.iconLink,
+                  color: hoveredIcon === 'linkedin' ? '#FF3131' : '#ffff',
+                }}
+                onMouseEnter={() => setHoveredIcon('linkedin')}
+                onMouseLeave={() => setHoveredIcon(null)}
+              >
                 <SlSocialLinkedin />
               </a>
             </span>
-            <span style={styles.icon}>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                <FaInstagram style={{paddingTop:"5px",fontSize:"20px"}} />
+            <span
+              style={{
+                ...styles.icon,
+                backgroundColor: hoveredIcon === 'instagram' ? 'white' : 'transparent',
+                transform: hoveredIcon === 'instagram' ? 'translateY(-3px)' : 'translateY(0)',
+                boxShadow: hoveredIcon === 'instagram' ? '0 6px 15px rgba(255, 49, 49, 0.25)' : 'none',
+              }}
+            >
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  ...styles.iconLink,
+                  color: hoveredIcon === 'instagram' ? '#FF3131' : '#ffff',
+                }}
+                onMouseEnter={() => setHoveredIcon('instagram')}
+                onMouseLeave={() => setHoveredIcon(null)}
+              >
+                <FaInstagram style={{fontSize: isSmallMobile ? "16px" : "20px"}} />
               </a>
             </span>
-            <span style={styles.icon}>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
-                <SlSocialYoutube style={{paddingTop:"5px",fontSize:"20px"}} />
+            <span
+              style={{
+                ...styles.icon,
+                backgroundColor: hoveredIcon === 'youtube' ? 'white' : 'transparent',
+                transform: hoveredIcon === 'youtube' ? 'translateY(-3px)' : 'translateY(0)',
+                boxShadow: hoveredIcon === 'youtube' ? '0 6px 15px rgba(255, 49, 49, 0.25)' : 'none',
+              }}
+            >
+              <a
+                href="https://youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  ...styles.iconLink,
+                  color: hoveredIcon === 'youtube' ? '#FF3131' : '#ffff',
+                }}
+                onMouseEnter={() => setHoveredIcon('youtube')}
+                onMouseLeave={() => setHoveredIcon(null)}
+              >
+                <SlSocialYoutube style={{fontSize: isSmallMobile ? "16px" : "20px"}} />
               </a>
             </span>
           </div>
@@ -195,13 +274,14 @@ function Footer() {
  
         {/* Right Section */}
         <div style={styles.linksSection}>
-          <div style={styles.column}>
-            <div style={styles.heading}>Quick Links</div>
-            <a href="#" style={styles.link}>Home</a>
-            <a href="#" style={styles.link}>Features</a>
-            <a href="#" style={styles.link}>How it Works</a>
-            <a href="#" style={styles.link}>Testimonials</a>
-          </div>
+              <div style={styles.column}>
+              <div style={styles.heading}>Quick Links</div>
+              <a href="#home" id="home" style={styles.link}>Home</a>
+              <a href="#features" id="features" style={styles.link}>Features</a>
+              <a href="#how-it-works" id="how-it-works" style={styles.link}>How it Works</a>
+              <a href="#testimonials" id="testimonials" style={styles.link}>Testimonials</a>
+            </div>
+ 
           <div style={styles.column}>
             <div style={styles.heading}>Customer Support</div>
             <a href="#" style={styles.link}>Contact Us</a>

@@ -48,7 +48,7 @@ const CustomDropdown = ({ options, value, onChange, width = "120px" }) => {
           justifyContent: "space-between",
           alignItems: "center",
           padding: "8px 12px",
-          border: "1px solid #FF6B00",
+          border: "1px solid #FF3131",
           borderRadius: "6px",
           backgroundColor: "white",
           cursor: "pointer",
@@ -57,7 +57,7 @@ const CustomDropdown = ({ options, value, onChange, width = "120px" }) => {
           boxSizing: "border-box",
           fontSize: "14px",
           fontWeight: "500",
-          color: "#FF6B00",
+          color: "#FF3131",
           transition: "all 0.2s ease",
           boxShadow: "0 1px 2px rgba(255,107,0,0.1)"
         }}
@@ -77,7 +77,7 @@ const CustomDropdown = ({ options, value, onChange, width = "120px" }) => {
           }
           {selectedOption.label}
         </div>
-        <IoMdArrowDropdown style={{ fontSize: "20px", color: "#FF6B00", marginLeft: "5px", flexShrink: 0 }} />
+        <IoMdArrowDropdown style={{ fontSize: "20px", color: "#FF3131", marginLeft: "5px", flexShrink: 0 }} />
       </div>
  
       {/* Dropdown Menu */}
@@ -89,7 +89,7 @@ const CustomDropdown = ({ options, value, onChange, width = "120px" }) => {
             left: 0,
             width: "100%",
             backgroundColor: "white",
-            border: "1px solid #FF6B00",
+            border: "1px solid #FF3131",
             borderRadius: "8px",
             marginTop: "4px",
             zIndex: 10,
@@ -114,18 +114,18 @@ const CustomDropdown = ({ options, value, onChange, width = "120px" }) => {
                 transition: "all 0.2s ease",
                 fontSize: "14px",
                 fontWeight: option.value === value ? "500" : "400",
-                color: "#FF6B00",
-                borderLeft: option.value === value ? "3px solid #FF6B00" : "3px solid transparent",
+                color: "#FF3131",
+                borderLeft: option.value === value ? "3px solid #FF3131" : "3px solid transparent",
                 whiteSpace: "nowrap",
                 minWidth: "80px"
               }}
               onMouseOver={(e) => {
                 e.currentTarget.style.backgroundColor = "#fff4ee";
-                e.currentTarget.style.color = "#FF6B00";
+                e.currentTarget.style.color = "#FF3131";
               }}
               onMouseOut={(e) => {
                 e.currentTarget.style.backgroundColor = "white";
-                e.currentTarget.style.color = "#FF6B00";
+                e.currentTarget.style.color = "#FF3131";
               }}
             >
               <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -135,7 +135,7 @@ const CustomDropdown = ({ options, value, onChange, width = "120px" }) => {
                 {option.label}
               </div>
               {option.value === value && (
-                <IoMdCheckmark style={{ color: "#FF6B00", fontSize: "18px", marginLeft: "auto" }} />
+                <IoMdCheckmark style={{ color: "#FF3131", fontSize: "18px", marginLeft: "auto" }} />
               )}
             </div>
           ))}
@@ -267,12 +267,12 @@ const AppLogs = () => {
             style={{
               width: "100%",
               padding: "8px 8px 8px 32px", /* Added left padding for the icon */
-              border: "1px solid #FF6B00",
+              border: "1px solid #FF3131",
               borderRadius: "6px",
               height: "30px", /* Match height with dropdowns */
               boxSizing: "border-box",
               fontSize: "14px",
-              color: "#FF6B00",
+              color: "#FF3131",
               outline: "none",
             }}
             value={searchTerm}
@@ -300,7 +300,7 @@ const AppLogs = () => {
               width: "40px",
               height: "40px",
               border: "4px solid #f3f3f3",
-              borderTop: "4px solid #FF6B00",
+              borderTop: "4px solid #FF3131",
               borderRadius: "50%",
               animation: "spin 1s linear infinite",
               marginBottom: "15px"
@@ -337,7 +337,7 @@ const AppLogs = () => {
             <thead style={{"position": "sticky", "top": "0",zIndex: "1"}}>
               <tr
                 style={{
-                  backgroundColor: "#FF6B00",
+                  backgroundColor: "#FF3131",
                   color: "white",
                   textAlign: "left",
                 }}
@@ -384,14 +384,14 @@ const AppLogs = () => {
             alignItems: "center",
             gap: "10px",
             backgroundColor: "transparent",
-            color: "#FF6B00",
+            color: "#FF3131",
             padding: "6px 12px",
             borderRadius: "8px"
           }}>
             <label style={{
               fontSize: "14px",
               fontWeight: "500",
-              color: "#FF6B00",
+              color: "#FF3131",
               whiteSpace: "nowrap",
               marginRight: "5px"
             }}>
@@ -417,7 +417,7 @@ const AppLogs = () => {
             alignItems: "center",
             gap: "10px",
             backgroundColor: "transparent",
-            color: "#FF6B00",
+            color: "#FF3131",
             padding: "6px 12px",
             borderRadius: "8px"
           }}>
@@ -426,8 +426,8 @@ const AppLogs = () => {
               disabled={currentPage === 1}
               style={{
                 backgroundColor: "transparent",
-                color: "#FF6B00",
-                border: "1px solid #FF6B00",
+                color: "#FF3131",
+                border: "1px solid #FF3131",
                 padding: "4px 10px",
                 borderRadius: "4px",
                 cursor: currentPage === 1 ? "not-allowed" : "pointer",
@@ -437,7 +437,7 @@ const AppLogs = () => {
             >
               ← Prev
             </button>
-            <span style={{ fontWeight: "bold", fontSize: "14px", color: "#FF6B00" }}>
+            <span style={{ fontWeight: "bold", fontSize: "14px", color: "#FF3131" }}>
               Page {currentPage} of {totalPages || 1}
             </span>
             <button
@@ -445,8 +445,8 @@ const AppLogs = () => {
               disabled={currentPage === totalPages || totalPages === 0}
               style={{
                 backgroundColor: "transparent",
-                color: "#FF6B00",
-                border: "1px solid #FF6B00",
+                color: "#FF3131",
+                border: "1px solid #FF3131",
                 padding: "4px 10px",
                 borderRadius: "4px",
                 cursor: currentPage === totalPages || totalPages === 0 ? "not-allowed" : "pointer",
