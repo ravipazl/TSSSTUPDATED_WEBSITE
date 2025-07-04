@@ -213,11 +213,6 @@ const Features = () => {
               ...responsiveStyles.readMoreBtn,
               background: isReadMoreHovered ? "#fff" : "#FF3131",
               color: isReadMoreHovered ? "#FF3131" : "#fff",
-              border: isReadMoreHovered?"2px solid transparent" : "2px solid white",
-              transform: isReadMoreHovered ? 'translateY(-3px)' : 'translateY(0)',
-              boxShadow: isReadMoreHovered
-                ? '0 8px 20px rgba(247, 53, 49, 0.3)'
-                : '0 4px 10px rgba(247, 53, 49, 0.2)',
             }}
             onMouseEnter={() => setIsReadMoreHovered(true)}
             onMouseLeave={() => setIsReadMoreHovered(false)}
@@ -232,6 +227,7 @@ const Features = () => {
               ...styles.card,
               ...responsiveStyles.card,
               ...(hoveredCard === 'otp' && styles.cardHovered)
+              
             }}
             onMouseEnter={() => setHoveredCard('otp')}
             onMouseLeave={() => setHoveredCard(null)}
@@ -384,14 +380,17 @@ const styles = {
   },
   textSection: {
     flex: '1 1 40%',
+    height:"80%",
     maxWidth: '500px',
     position: 'relative',
   },
   subheading: {
+    
     color: '#F73531', // Updated to match Home component color
     fontWeight: 700,
     fontSize: '16px',
     marginBottom: '15px',
+    marginTop:"50px",
     letterSpacing: '0.5px',
   },
   heading: {
@@ -399,6 +398,8 @@ const styles = {
     fontWeight: '700',
     marginBottom: '25px',
     lineHeight: '1.3',
+    height:"25%",
+
   },
   highlight: {
     color: '#F73531', // Updated to match Home component color
