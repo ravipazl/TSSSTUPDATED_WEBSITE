@@ -8,20 +8,22 @@ import phone3Img from "../assets/phone_img3.svg";
 function Mobile() {
   const styles = {
     page: {
+      marginTop:"10%",
       marginLeft:"30px",
       marginRight:"30px",
       textAlign: "center",
     },
     topText: {
-      color: "#FF3131",
+      color: "#F73531",
       fontSize: "16px",
       fontWeight: "500",
      
     },
     heading: {
-      fontSize: "clamp(1.8rem, 5vw, 2.5rem)",
+      fontSize: "clamp(1.8rem, 5vw, 48px)",
       fontWeight: "700",
       color:"#252839",
+      fontFamily: 'Raleway',
      
      
     },
@@ -32,9 +34,9 @@ function Mobile() {
   WebkitTextFillColor: "transparent",
     },
     subtitle: {
-      color: "#6b7280",
-      fontSize: "16px",
-      fontWeight:"500",
+      color: "#4F4F4F",
+      fontSize: "18px",
+      fontWeight:"400",
       margin: "10px 0 30px",
     },
     appButtons: {
@@ -90,14 +92,14 @@ function Mobile() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img src={appStoreImg} alt="App Store" width="140" style={{ cursor: 'pointer' }} />
+          <img src={appStoreImg} alt="App Store" width="184.89px" height="61.63px" style={{ cursor: 'pointer' }} />
         </a>
         <a
           href="https://play.google.com/store/apps/details?id=com.pazl.buzzApp"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img src={googlePlayImg} alt="Google Play" width="140" style={{ cursor: 'pointer' }} />
+          <img src={googlePlayImg} alt="Google Play" width="184.89px" height="61.63px" style={{ cursor: 'pointer' }} />
         </a>
       </div>
  
@@ -130,4 +132,3 @@ function Mobile() {
 }
  
 export default Mobile;
- 

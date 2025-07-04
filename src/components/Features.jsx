@@ -3,22 +3,23 @@ import vector from '../assets/fluent_chat-off-24-regular.svg';
 import encryption from '../assets/lucide_signal.svg';
 import shield from '../assets/msg.svg';
 import location from '../assets/proicons_bell-off.svg';
-
+import { color } from 'chart.js/helpers';
+ 
 const Features = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [hoveredCard, setHoveredCard] = useState(null);
   const [isReadMoreHovered, setIsReadMoreHovered] = useState(false);
-  
+ 
   // Update window width when resized
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
-    
+   
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-  
+ 
   // Responsive styles based on window width
   const getResponsiveStyles = () => {
     // Mobile styles (under 480px - small phones)
@@ -90,7 +91,7 @@ const Features = () => {
         },
       };
     }
-    
+   
     // Mobile styles (480px - 768px)
     if (windowWidth >= 480 && windowWidth < 768) {
       return {
@@ -126,7 +127,7 @@ const Features = () => {
         },
       };
     }
-    
+   
     // Tablet styles (768px - 1024px)
     if (windowWidth >= 768 && windowWidth < 1024) {
       return {
@@ -151,7 +152,7 @@ const Features = () => {
         },
       };
     }
-    
+   
     // Default styles (desktop)
     return {
       container: {
@@ -194,9 +195,9 @@ const Features = () => {
       },
     };
   };
-  
+ 
   const responsiveStyles = getResponsiveStyles();
-  
+ 
   return (
     <section id="features" style={{...styles.container, ...responsiveStyles.container}}>
       <div style={{...styles.featuresWrapper, ...responsiveStyles.featuresWrapper}}>
@@ -205,8 +206,8 @@ const Features = () => {
           <h2 style={{...styles.heading, ...responsiveStyles.heading}}>
             Experience Connection Redefined
           </h2>
-          <a 
-            href="#" 
+          <a
+            href="#"
             style={{
               ...styles.readMoreBtn,
               ...responsiveStyles.readMoreBtn,
@@ -214,8 +215,8 @@ const Features = () => {
               color: isReadMoreHovered ? "#FF3131" : "#fff",
               border: isReadMoreHovered?"2px solid transparent" : "2px solid white",
               transform: isReadMoreHovered ? 'translateY(-3px)' : 'translateY(0)',
-              boxShadow: isReadMoreHovered 
-                ? '0 8px 20px rgba(247, 53, 49, 0.3)' 
+              boxShadow: isReadMoreHovered
+                ? '0 8px 20px rgba(247, 53, 49, 0.3)'
                 : '0 4px 10px rgba(247, 53, 49, 0.2)',
             }}
             onMouseEnter={() => setIsReadMoreHovered(true)}
@@ -224,9 +225,9 @@ const Features = () => {
             Read More →
           </a>
         </div>
-
+ 
         <div id='features' style={{...styles.cardsGrid, ...responsiveStyles.cardsGrid}}>
-          <div 
+          <div
             style={{
               ...styles.card,
               ...responsiveStyles.card,
@@ -240,23 +241,23 @@ const Features = () => {
               ...responsiveStyles.icon,
               ...(hoveredCard === 'otp' && styles.iconHovered)
             }}>
-              <img 
-                src={shield} 
-                alt="OTP Security" 
+              <img
+                src={shield}
+                alt="OTP Security"
                 style={{
                   ...styles.svgIcon,
                   ...responsiveStyles.svgIcon,
                   ...(hoveredCard === 'otp' && styles.svgIconHovered)
-                }} 
+                }}
               />
             </div>
             <h3 style={{...styles.cardTitle, ...responsiveStyles.cardTitle}}>Your Personal Buzzer</h3>
             <p style={{...styles.cardText, ...responsiveStyles.cardText}}>
-              Send quiet nudges, gentle prompts, or crucial acknowledgements without a single word. 
+              Send quiet nudges, gentle prompts, or crucial acknowledgements without a single word.
             </p>
           </div>
-
-          <div 
+ 
+          <div
             style={{
               ...styles.card,
               ...responsiveStyles.card,
@@ -270,14 +271,14 @@ const Features = () => {
               ...responsiveStyles.icon,
               ...(hoveredCard === 'location' && styles.iconHovered)
             }}>
-              <img 
-                src={location} 
-                alt="Smart Location" 
+              <img
+                src={location}
+                alt="Smart Location"
                 style={{
                   ...styles.svgIcon,
                   ...responsiveStyles.svgIcon,
                   ...(hoveredCard === 'location' && styles.svgIconHovered)
-                }} 
+                }}
               />
             </div>
             <h3 style={{...styles.cardTitle, ...responsiveStyles.cardTitle}}>Embrace the Quiet Space</h3>
@@ -285,8 +286,8 @@ const Features = () => {
               Reclaim your peace. TsssT respects your space and time, allowing you to connect on your terms.
             </p>
           </div>
-
-          <div 
+ 
+          <div
             style={{
               ...styles.card,
               ...responsiveStyles.card,
@@ -300,23 +301,23 @@ const Features = () => {
               ...responsiveStyles.icon,
               ...(hoveredCard === 'call' && styles.iconHovered)
             }}>
-              <img 
-                src={vector} 
-                alt="Call Management" 
+              <img
+                src={vector}
+                alt="Call Management"
                 style={{
                   ...styles.svgIcon,
                   ...responsiveStyles.svgIcon,
                   ...(hoveredCard === 'call' && styles.svgIconHovered)
-                }} 
+                }}
               />
             </div>
-            <h3 style={{...styles.cardTitle, ...responsiveStyles.cardTitle}}>Discreet by Design</h3>
+            <h3 style={{...styles.cardTitle, ...responsiveStyles.cardTitle,}}>Discreet by Design</h3>
             <p style={{...styles.cardText, ...responsiveStyles.cardText}}>
               Designed for mindful interaction. TsssT seamlessly integrates into your day, without disrupting your flow.
             </p>
           </div>
-
-          <div 
+ 
+          <div
             style={{
               ...styles.card,
               ...responsiveStyles.card,
@@ -330,14 +331,14 @@ const Features = () => {
               ...responsiveStyles.icon,
               ...(hoveredCard === 'encryption' && styles.iconHovered)
             }}>
-              <img 
-                src={encryption} 
-                alt="Encryption" 
+              <img
+                src={encryption}
+                alt="Encryption"
                 style={{
                   ...styles.svgIcon,
                   ...responsiveStyles.svgIcon,
                   ...(hoveredCard === 'encryption' && styles.svgIconHovered)
-                }} 
+                }}
               />
             </div>
             <h3 style={{...styles.cardTitle, ...responsiveStyles.cardTitle}}>Be Telepathic</h3>
@@ -350,7 +351,7 @@ const Features = () => {
     </section>
   );
 };
-
+ 
 const styles = {
   container: {
     padding: '80px 20px',
@@ -388,14 +389,14 @@ const styles = {
   },
   subheading: {
     color: '#F73531', // Updated to match Home component color
-    fontWeight: 600,
+    fontWeight: 700,
     fontSize: '16px',
     marginBottom: '15px',
     letterSpacing: '0.5px',
   },
   heading: {
-    fontSize: 'clamp(28px, 5vw, 36px)', // Responsive font size
-    fontWeight: 'bold',
+    fontSize: 'clamp(28px, 5vw, 40px)', // Responsive font size
+    fontWeight: '700',
     marginBottom: '25px',
     lineHeight: '1.3',
   },
@@ -408,12 +409,16 @@ const styles = {
     padding: '12px 24px',
     borderRadius: '6px',
     textDecoration: 'none',
-    fontWeight: 'bold',
+    fontWeight: '700',
     display: 'inline-block',
     boxShadow: '0 4px 10px rgba(247, 53, 49, 0.2)',
     transition: 'all 0.3s ease',
     cursor: 'pointer',
     border: '2px solid transparent',
+    width:"175px",
+    height:"54px",
+    fontSize:"18px",
+   
   },
   cardsGrid: {
     flex: '1 1 55%',
@@ -423,7 +428,7 @@ const styles = {
     gap: '25px',
   },
   card: {
-    background: '#fff',
+    background: '#F4F5F8',
     borderRadius: '12px',
     padding: '30px 20px',
     boxShadow: '0 8px 20px rgba(0,0,0,0.08)',
@@ -435,40 +440,48 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'center',
   },
-
+ 
   icon: {
     fontSize: '32px',
     marginBottom: '20px',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    width: '80px',
-    height: '80px',
+    width: '84.69px',
+    height: '84.69px',
     borderRadius: '50%',
-    background: '#FF3131', // Updated to match Home component color
+    background: '#FF3131',
     boxShadow: '0 4px 10px rgba(247, 53, 49, 0.3)',
     margin: '0 auto 20px auto',
     transition: 'all 0.3s ease',
+   
+   
   },
   svgIcon: {
     width: '32px',
     height: '32px',
     transition: 'all 0.3s ease',
     filter: 'brightness(0) invert(1)',
+   
   },
   cardTitle: {
     fontSize: '20px',
     fontWeight: '600',
     marginBottom: '15px',
     textAlign: 'center',
+   
+   
   },
   cardText: {
-    fontSize: '15px',
+    fontSize: '16px',
     lineHeight: '1.5',
     color: 'inherit',
     flex: '1',
     textAlign: 'center',
+    fontWeight: '400',
   },
 };
-
+ 
 export default Features;
+ 
+ 

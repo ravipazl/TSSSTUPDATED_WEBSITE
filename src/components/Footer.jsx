@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import tessstLogo from "../assets/tessst.png";
- 
+import logoImg from '../assets/logo.png';
 import { FaXTwitter } from "react-icons/fa6";
 import { SlSocialLinkedin } from "react-icons/sl";
 import { FaInstagram } from "react-icons/fa6";
@@ -38,13 +38,13 @@ function Footer() {
       marginBottom: isMobile ? "30px" : "0",
     },
     logo: {
-      width: isSmallMobile ? "80px" : "100px",
-      height: "auto",
+      width: isSmallMobile ? "80px" : "120.82px",
+      height:isSmallMobile ? "60px" : "68.89px",
       marginBottom: isSmallMobile ? "15px" : "20px",
      
     },
     description: {
-      fontSize: isSmallMobile ? "14px" : "16px",
+      fontSize: isSmallMobile ? "14px" : "18px",
       color: "#ffff",
       fontWeight: "400",
       marginBottom: isSmallMobile ? "15px" : "20px",
@@ -64,25 +64,31 @@ function Footer() {
       border: "none",
       padding: isSmallMobile ? "8px 12px" : "10px 15px",
       outline: "none",
-      width: isMobile ? (isSmallMobile ? "120px" : "150px") : "200px",
-      fontSize: isSmallMobile ? "14px" : "16px",
+      width: isMobile ? (isSmallMobile ? "120px" : "150px") : "300px",
+      fontSize: isSmallMobile ? "14px" : "18px",
       borderRadius: "30px 0 0 30px",
+      fontWeight: "400",
      
     },
     btnSecondary: {
-      padding: isSmallMobile ? "5px 8px" : "5px 10px",
-      margin: isSmallMobile ? "4px 6px" : "4px 10px",
+      padding: isSmallMobile ? "5px 8px" : "5px",
+      margin: isSmallMobile ? "4px 6px" : " 5px 10px 5px 0px",
       border: "#ffff",
       color: "black",
       borderRadius: "30px",
       textDecoration: "none",
-      fontWeight: "bold",
+      fontWeight: "500",
       display: "inline-flex",
       alignItems: "center",
       gap: "8px",
       cursor: "pointer",
-      fontSize: isSmallMobile ? "14px" : "16px",
-      minHeight: "36px", // Ensure minimum touch target height
+      fontSize: isSmallMobile ? "14px" : "14px",
+      minHeight: "41px", // Ensure minimum touch target height
+      width:"102px",
+      justifyContent: "center",
+     
+ 
+     
     },
     socialIcons: {
       display: "flex",
@@ -95,15 +101,15 @@ function Footer() {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      width: isSmallMobile ? "32px" : "36px",
-      height: isSmallMobile ? "32px" : "36px",
+      width: isSmallMobile ? "26px" : "28px",
+      height: isSmallMobile ? "26px" : "28px",
       borderRadius: "50%",
       padding: "5px",
       border: "1px solid #ffff",
       transition: "all 0.3s ease",
     },
     iconLink: {
-      color: "#ffff",
+      color: "#E3E3E3",
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
@@ -123,7 +129,7 @@ function Footer() {
     },
     heading: {
       fontSize: isSmallMobile ? "15px" : "16px",
-      fontWeight: "600",
+      fontWeight: "500",
       color: "#ffff",
       marginBottom: isSmallMobile ? "8px" : "10px",
     },
@@ -139,7 +145,7 @@ function Footer() {
     copyright: {
       textAlign: "center",
       fontWeight: "400",
-      fontSize: "14px",
+      fontSize: "16px",
       color: "#ffff",
       marginTop: "30px",
       paddingBottom: "20px",
@@ -151,14 +157,14 @@ function Footer() {
       <div style={styles.container}>
         {/* Left Section */}
         <div style={styles.left}>
-          <img style={styles.logo} src={tessstLogo} alt="Logo" />
+          <img style={styles.logo} src={logoImg} alt="Logo" />
           <p style={styles.description}>
             Join our newsletter for secure calling tips, the latest updates on
             encryption technology, and smart location-sharing features.
           </p>
           <div style={styles.inputWrapper}>
             <input type="email" placeholder="Enter your email" style={styles.input} />
-            <div>
+            <div >
               <a
                 href="#how-it-works"
                 onClick={(e) => {

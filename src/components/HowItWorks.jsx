@@ -1,17 +1,18 @@
+import { color } from 'chart.js/helpers';
 import React, { useState, useEffect } from 'react';
-
+ 
 const HowItWorks = () => {
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
-
+ 
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
-
+ 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-
+ 
   // Get responsive styles based on window width
   const getResponsiveStyles = () => {
     // Small mobile styles (under 480px)
@@ -64,7 +65,7 @@ const HowItWorks = () => {
         },
       };
     }
-    
+   
     // Mobile styles (480px - 768px)
     if (windowWidth >= 480 && windowWidth < 768) {
       return {
@@ -103,7 +104,7 @@ const HowItWorks = () => {
         },
       };
     }
-    
+   
     // Small tablet styles (768px - 900px)
     if (windowWidth >= 768 && windowWidth < 900) {
       return {
@@ -129,7 +130,7 @@ const HowItWorks = () => {
         },
       };
     }
-    
+   
     // Tablet styles (900px - 1024px)
     if (windowWidth >= 900 && windowWidth < 1024) {
       return {
@@ -157,7 +158,7 @@ const HowItWorks = () => {
         },
       };
     }
-    
+   
     // Default styles (desktop)
     return {
       container: {},
@@ -173,17 +174,17 @@ const HowItWorks = () => {
       stepDesc: {},
     };
   };
-
+ 
   const responsiveStyles = getResponsiveStyles();
-
+ 
   return (
     <section id="how-it-works" style={{...styles.container, ...responsiveStyles.container}}>
       <div style={{height:"100px",width:"100%"}}></div>
-      <p style={{...styles.subheading, ...responsiveStyles.subheading}}>HOW IT WORKS</p>
+     
       <h2 style={{...styles.heading, ...responsiveStyles.heading}}>
-        Get Started With 3 Easy Steps to <br /> Secure Calling
+        Be Part of a Community of Introverts
       </h2>
-
+ 
       <div style={{...styles.stepsWrapper, ...responsiveStyles.stepsWrapper}}>
         <div style={{...styles.stepsContainer, ...responsiveStyles.stepsContainer}}>
           {steps.map((step, index) => (
@@ -193,7 +194,7 @@ const HowItWorks = () => {
                 <h3 style={{...styles.stepTitle, ...responsiveStyles.stepTitle}}>{step.title}</h3>
                 <p style={{...styles.stepDesc, ...responsiveStyles.stepDesc}}>{step.description}</p>
               </div>
-              
+             
               {index < steps.length - 1 && (
                 <div style={{...styles.connector, ...responsiveStyles.connector}}>
                   <div style={styles.dottedLine}></div>
@@ -206,22 +207,22 @@ const HowItWorks = () => {
     </section>
   );
 };
-
+ 
 const steps = [
   {
-    title: 'Enter Your Number',
-    description: 'Register with your mobile number to receive a verification code',
+    title: 'Get Verified',
+    description: 'Enter your mobile number verify with one-time password',
   },
   {
-    title: 'Verify OTP',
-    description: 'Enter the 5-digit code sent to your phone',
+    title: 'Create Private Circles',
+    description: 'Create private groups add your closet connections',
   },
   {
-    title: 'Start Calling',
-    description: 'Connect with contacts or groups instantly',
+    title: 'Send “TSSST”',
+    description: 'Simple “TsssT” signals Silently and intutively',
   },
 ];
-
+ 
 const styles = {
   container: {
     padding: '60px 20px',
@@ -242,12 +243,13 @@ const styles = {
     width: '100%',
   },
   heading: {
-    fontSize: '28px',
-    fontWeight: 'bold',
+    fontSize: '48px',
+    fontWeight: '700',
     marginBottom: '40px',
     lineHeight: '1.5',
     textAlign: 'center',
     width: '100%',
+    fontFamily: 'Raleway',
   },
   stepsWrapper: {
     width: '100%',
@@ -306,16 +308,18 @@ const styles = {
     zIndex: 2,
   },
   stepTitle: {
-    fontSize: '16px',
-    fontWeight: 'bold',
+    fontSize: '24px',
+    fontWeight: '700',
     marginBottom: '10px',
+    color:"#252839",
   },
   stepDesc: {
-    fontSize: '14px',
-    color: '#666',
+    fontSize: '18px',
+    fontWeight: '400',
+    color: '#4F4F4F',
     maxWidth: '100%',
     wordWrap: 'break-word',
   },
 };
-
+ 
 export default HowItWorks;
