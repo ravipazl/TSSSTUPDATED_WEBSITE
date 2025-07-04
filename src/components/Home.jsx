@@ -172,7 +172,6 @@ const Home = () => {
             alignItems: "center",
             height: getResponsiveSize("350px", "450px", "500px", "500px"),
             width: getResponsiveSize("120px", "150px", "150px", "150px"),
-            padding: getResponsiveSize("10px 10px", "15px 15px", "20px 20px", "20px 20px"),
             order: 2,
             zIndex: 3,
             position: "relative",

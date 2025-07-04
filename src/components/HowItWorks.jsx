@@ -151,7 +151,7 @@ const HowItWorks = () => {
         },
         connector: {
           right: '-30px',
-          width: '60px',
+          width: '10px',
         },
         stepContent: {
           padding: '0 5px',
@@ -233,6 +233,7 @@ const styles = {
     alignItems: 'center',
     width: '100%',
     boxSizing: 'border-box',
+    
   },
   subheading: {
     color: '#FF3131',
@@ -252,11 +253,11 @@ const styles = {
     fontFamily: 'Raleway',
   },
   stepsWrapper: {
-    width: '100%',
-    maxWidth: '900px',
+    width: '90%',
     display: 'flex',
     justifyContent: 'center',
     overflow: 'hidden',
+    
   },
   stepsContainer: {
     display: 'flex',
@@ -282,9 +283,9 @@ const styles = {
   },
   connector: {
     position: 'absolute',
-    top: '40px',
-    right: '-60px',
-    width: '120px',
+    top: '100px',
+    right: '-100px',
+    width: '200px',
     zIndex: 1,
   },
   dottedLine: {
@@ -295,10 +296,10 @@ const styles = {
   circle: {
     background: ' #FF3131',
     color: '#fff',
-    width: '80px',
-    height: '80px',
-    fontSize: '32px',
-    fontWeight: 'bold',
+    width: '192px',
+    height: '192px',
+    fontSize: '100px',
+    fontWeight: '700',
     borderRadius: '50%',
     display: 'flex',
     alignItems: 'center',
