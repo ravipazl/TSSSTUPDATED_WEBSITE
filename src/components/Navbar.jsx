@@ -105,7 +105,7 @@ const Navbar = () => {
       boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
     },
     container: {
-      maxWidth: '1200px',
+      maxWidth: '100%',
       margin: '0 auto',
       padding: '0 20px',
       display: 'flex',
@@ -124,10 +124,11 @@ const Navbar = () => {
       display: 'flex',
       alignItems: 'center',
       gap: '20px',
+      height: '60px', // FIX: Set height to match buttons for vertical alignment
     },
     navLink: {
-      fontSize: '16px',
-      fontWeight: '500',
+      fontSize: '20px',
+      fontWeight: '400',
       textDecoration: 'none',
       borderBottom: '2px solid transparent',
       transition: 'all 0.3s ease',
@@ -135,18 +136,20 @@ const Navbar = () => {
       colo:"#FFF"
     },
     downloadBtn: {
+      height:"60px",
       padding: '10px 20px',
-      fontSize: '14px',
-      fontWeight: 'bold',
+      fontSize: '24px',
+      fontWeight: '600',
       borderRadius: '6px',
       textDecoration: 'none',
       cursor: 'pointer',
       transition: 'all 0.3s ease',
     },
     loginBtn: {
+      height:"60px",
       padding: '10px 20px',
-      fontSize: '14px',
-      fontWeight: 'bold',
+      fontSize: '24px',
+      fontWeight: '600',
       borderRadius: '6px',
       textDecoration: 'none',
       cursor: 'pointer',
@@ -207,12 +210,13 @@ const Navbar = () => {
       color: '#FFFFF',
     },
     mobileDownloadBtn: {
+      height: '60px',
       marginTop: '20px',
       padding: '12px 24px',
       width: '80%',
       textAlign: 'center',
-      fontSize: '16px',
-      fontWeight: 'bold',
+      fontSize: '24px',
+      fontWeight: '600',
       borderRadius: '6px',
       background: '#FF3131',
       color: '#fff',
@@ -221,11 +225,12 @@ const Navbar = () => {
    
     mobileLoginBtn: {
       marginTop: '20px',
+      height: '60px',
       padding: '12px 24px',
       width: '80%',
       textAlign: 'center',
-      fontSize: '16px',
-      fontWeight: 'bold',
+      fontSize: '24px',
+      fontWeight: '600',
       borderRadius: '6px',
       background: '#FF3131',
       color: '#fff',
@@ -236,8 +241,10 @@ const Navbar = () => {
   };
  
   // Get responsive styles based on window width
-  const getResponsiveStyles = () => {
-    // Mobile styles (under 768px)
+// Paste this entire function to replace the existing getResponsiveStyles function.
+
+const getResponsiveStyles = () => {
+    // Mobile styles (under 768px) - NO CHANGES HERE
     if (windowWidth <= 768) {
       return {
         container: {
@@ -268,18 +275,18 @@ const Navbar = () => {
         downloadBtn: {
           display: isMobileMenuOpen ? 'none' : 'block',
           padding: windowWidth < 360 ? '8px 12px' : '8px 16px',
-          fontSize: windowWidth < 360 ? '13px' : '14px',
+          fontSize: windowWidth < 360 ? '13px' : '24px',
          
         },
         loginBtn: {
           display: isMobileMenuOpen ? 'none' : 'block',
           padding: windowWidth < 360 ? '8px 12px' : '8px 16px',
-          fontSize: windowWidth < 360 ? '13px' : '14px',
+          fontSize: windowWidth < 360 ? '13px' : '24px',
         },
       };
     }
    
-    // Tablet styles (768px - 1024px)
+    // Tablet styles (768px - 1024px) - NO CHANGES HERE
     if (windowWidth > 768 && windowWidth <= 1024) {
       return {
         container: {
@@ -287,24 +294,31 @@ const Navbar = () => {
         },
         nav: {
           gap: '15px',
+          flexGrow: 1,
+          justifyContent: 'center',
         },
         navLink: {
           fontSize: '15px',
         },
         downloadBtn: {
           padding: '8px 16px',
-          fontSize: '14px',
-          // Hover styles will be applied directly in the component
+          fontSize: '24px',
         },
         loginBtn: {
           padding: '8px 16px',
-          fontSize: '14px',
+          fontSize: '24px',
         },
       };
     }
    
-    // Default styles (desktop)
-    return {};
+    // Default styles (desktop > 1024px) - THIS IS THE FIX
+    // The nav property is added here to ensure centering on large screens.
+    return {
+        nav: {
+            flexGrow: 1, // Allows the nav container to fill the space
+            justifyContent: 'center', // Centers the nav links within that space
+        }
+    };
   };
  
   const responsiveStyles = getResponsiveStyles();
@@ -316,7 +330,7 @@ const Navbar = () => {
     // Base style for all screen sizes
     const linkStyle = {
       ...baseStyles.navLink,
-      color: isHovered || isActive ? '#FFFFF' : '#FFFFFF',
+      color: isHovered || isActive ? '#fff' : 'rgba(255, 255, 255, 0.6)',
       borderBottom: isHovered || isActive ? '2px solid white' : '2px solid transparent',
       transition: 'all 0.3s ease',
     };
@@ -461,7 +475,7 @@ const Navbar = () => {
  
         {/* Show buttons outside mobile menu on desktop */}
         {windowWidth > 768 && (
-          <div style={{ display: 'flex', alignItems: 'center' }}>
+          <div style={{ display: 'flex', alignItems: 'center', }}>
             <a
               href={isIOS
                 ? "https://apps.apple.com/us/app/tssst/id6745514901"
@@ -515,4 +529,3 @@ const Navbar = () => {
 };
  
 export default Navbar;
- 

@@ -3,6 +3,8 @@ import tssstImg1 from "../assets/tssst_img1.png";
 import tssstImg2 from "../assets/tssst_img2.png";
 import tssstImg3 from "../assets/tssst_img3.png";
  
+ 
+ 
 const TssstFeatures = () => {
   // State to track viewport width for responsive adjustments
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -27,13 +29,16 @@ const TssstFeatures = () => {
  
   // Responsive heading style
   const headingStyle = {
-    fontSize: "clamp(1.5rem, 5vw, 2.5rem)",
-    fontWeight: "bold",
+    fontSize: "clamp(1.5rem, 5vw, 48px)",
+    fontWeight: "700",
     marginBottom: "clamp(1.5rem, 4vw, 3rem)",
     color: "#252839",
     textAlign: "center",
     padding: "0 10px",
     lineHeight: 1.3,
+    fontFamily: 'Raleway',
+   
+     
   };
  
   // Responsive grid style
@@ -49,12 +54,12 @@ const TssstFeatures = () => {
   const cardStyle = {
     backgroundColor: "#ffffff",
     borderRadius: "1.5rem",
-    padding: windowWidth < 480 ? "15px" : windowWidth < 768 ? "18px" : "20px",
+    padding: windowWidth < 480 ? "15px" : windowWidth < 768 ? "18px" : "10px",
     width: windowWidth < 480 ? "100%" : "auto",
-    maxWidth: windowWidth < 480 ? "none" : "309px",
+    maxWidth: windowWidth < 480 ? "none" : "411px",
     minWidth: windowWidth < 480 ? "none" : "250px",
     flex: windowWidth < 480 ? "1 1 100%" : "1 1 300px",
-    height: "auto",
+    height: "309px",
     boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
     textAlign: "left",
     display: "flex",
@@ -68,8 +73,8 @@ const TssstFeatures = () => {
   const iconBoxStyle = {
     backgroundColor: "#FF3131",
     borderRadius: "0.75rem",
-    width: windowWidth < 480 ? "40px" : "48px",
-    height: windowWidth < 480 ? "40px" : "48px",
+    width: windowWidth < 480 ? "40px" : "65px",
+    height: windowWidth < 480 ? "40px" : "65px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -87,8 +92,9 @@ const TssstFeatures = () => {
  
   // Responsive title style
   const titleStyle = {
-    fontSize: windowWidth < 480 ? "1.2rem" : windowWidth < 768 ? "1.4rem" : "1.6rem",
-    fontWeight: 600,
+    fontSize: windowWidth < 480 ? "1.2rem" : windowWidth < 768 ? "1.4rem" : "32px",
+    fontWeight: 500,
+   
     color: "#252839",
     lineHeight: 1.3,
   };
@@ -98,6 +104,7 @@ const TssstFeatures = () => {
     fontSize: windowWidth < 480 ? "14px" : "16px",
     color: "#4F4F4F",
     lineHeight: 1.5,
+    fontWeight:400,
   };
  
   // Features data
@@ -126,10 +133,10 @@ const TssstFeatures = () => {
   const [hoveredCard, setHoveredCard] = useState(null);
  
   return (
-    
+   
     <section style={containerStyle} id="testimonials">
       <div style={{height:"100px",width:"100%"}}></div>
-      <h2 style={headingStyle}>
+      <h2 style={headingStyle} >
         TsssT Features: Simplicity Defines
       </h2>
  
@@ -155,10 +162,8 @@ const TssstFeatures = () => {
         ))}
       </div>
     </section>
-    
+   
   );
 };
  
 export default TssstFeatures;
- 
- 
