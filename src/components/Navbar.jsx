@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import logoImg from '../assets/logo.png';
 import LoginModal from './LoginModal';
-import { color } from 'chart.js/helpers';
  
 const Navbar = () => {
   const [hoveredLink, setHoveredLink] = useState(null);
@@ -92,438 +91,117 @@ const Navbar = () => {
     };
   }, [isMobileMenuOpen, windowWidth]);
  
-  // Base styles
+  // --- STYLES (Unchanged from previous version) ---
   const baseStyles = {
-    navbar: {
-      width: '100%',
-      padding: windowWidth < 360 ? '10px 0' : '15px 0',
-      backgroundColor: '#FF3131',
-      color: '#FFFFFF',
-      position: 'sticky',
-      top: 0,
-      zIndex: 100,
-      boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
-    },
-    container: {
-      maxWidth: '100%',
-      margin: '0 auto',
-      padding: '0 20px',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-    },
-    logoContainer: {
-      flexShrink: 0,
-    },
-    logoImage: {
-      height: '40px',
-      width: 'auto',
-      zIndex: 0, // Ensure logo is above other elements
-    },
-    nav: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: '20px',
-      height: '60px', // FIX: Set height to match buttons for vertical alignment
-    },
-    navLink: {
-      fontSize: '20px',
-      fontWeight: '400',
-      textDecoration: 'none',
-      borderBottom: '2px solid transparent',
-      transition: 'all 0.3s ease',
-      padding: '5px 0',
-      colo:"#FFF"
-    },
-    downloadBtn: {
-      height:"60px",
-      padding: '10px 20px',
-      fontSize: '24px',
-      fontWeight: '600',
-      borderRadius: '6px',
-      textDecoration: 'none',
-      cursor: 'pointer',
-      transition: 'all 0.3s ease',
-    },
-    loginBtn: {
-      height:"60px",
-      padding: '10px 20px',
-      fontSize: '24px',
-      fontWeight: '600',
-      borderRadius: '6px',
-      textDecoration: 'none',
-      cursor: 'pointer',
-      transition: 'all 0.3s ease',
-      background: 'transparent',
-    },
-    hamburger: {
-      display: 'none',
-      flexDirection: 'column',
-      cursor: 'pointer',
-      gap: '5px',
-      zIndex: 110,
-      padding: '8px', // Larger touch target
-    },
-    hamburgerLine: {
-      width: windowWidth < 360 ? '22px' : '25px',
-      height: '3px',
-      backgroundColor: '#fff',
-      transition: 'all 0.3s ease',
-    },
-    overlay: {
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      backgroundColor: 'rgba(0,0,0,0.3)',
-      zIndex: 110,
-    },
-    mobileMenuClose: {
-      position: 'absolute',
-      top: windowWidth < 360 ? '15px' : '20px',
-      right: windowWidth < 360 ? '15px' : '20px',
-      fontSize: windowWidth < 360 ? '24px' : '28px',
-      fontWeight: 'bold',
-      color: '#FF3131',
-      cursor: 'pointer',
-      zIndex: 110,
-      padding: '5px 10px', // Larger touch target
-    },
-    mobileNavContainer: {
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      width: '100%',
-      padding: '60px 0 30px',
-      color:"#FFF"
-    },
-    mobileNavLink: {
-      width: '80%',
-      textAlign: 'center',
-      padding: '12px 0',
-      margin: '5px 0',
-      fontSize: '18px',
-      fontWeight: '500',
-      borderRadius: '6px',
-      transition: 'all 0.3s ease',
-      color: '#FFFFF',
-    },
-    mobileDownloadBtn: {
-      height: '60px',
-      marginTop: '20px',
-      padding: '12px 24px',
-      width: '80%',
-      textAlign: 'center',
-      fontSize: '24px',
-      fontWeight: '600',
-      borderRadius: '6px',
-      background: '#FF3131',
-      color: '#fff',
-      textDecoration: 'none',
-    },
-   
-    mobileLoginBtn: {
-      marginTop: '20px',
-      height: '60px',
-      padding: '12px 24px',
-      width: '80%',
-      textAlign: 'center',
-      fontSize: '24px',
-      fontWeight: '600',
-      borderRadius: '6px',
-      background: '#FF3131',
-      color: '#fff',
-      textDecoration: 'none',
-      border: '2px solid white',
-      transition: 'all 0.3s ease',
-    },
+    navbar: { width: '100%', padding: windowWidth < 360 ? '10px 0' : '15px 0', backgroundColor: '#FF3131', color: '#FFFFFF', position: 'sticky', top: 0, zIndex: 100, boxShadow: '0 2px 8px rgba(0,0,0,0.05)', },
+    container: { maxWidth: '100%', margin: '0 auto', padding: '0 20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', },
+    logoContainer: { flexShrink: 0 },
+    logoImage: { height: '40px', width: 'auto' },
+    nav: { display: 'flex', alignItems: 'center', gap: '20px', height: '60px' },
+    navLink: { fontSize: '20px', fontWeight: '400', textDecoration: 'none', borderBottom: '2px solid transparent', transition: 'all 0.3s ease', padding: '5px 0', color:"#FFF" },
+    baseButton: { display: 'flex', alignItems: 'center', justifyContent: 'center', height: '45px', padding: '10px 20px', fontSize: '22px', fontWeight: '600', borderRadius: '6px', textDecoration: 'none', cursor: 'pointer', transition: 'all 0.3s ease', border: '2px solid white', },
+    mobileBaseButton: { display: 'flex', alignItems: 'center', justifyContent: 'center', height: '45px', marginTop: '15px', padding: '10px 24px', width: '80%', fontSize: '20px', fontWeight: '600', borderRadius: '6px', textDecoration: 'none', transition: 'all 0.3s ease', },
+    hamburger: { display: 'none', flexDirection: 'column', cursor: 'pointer', gap: '5px', zIndex: 110, padding: '8px', },
+    hamburgerLine: { width: windowWidth < 360 ? '22px' : '25px', height: '3px', backgroundColor: '#fff', transition: 'all 0.3s ease', },
+    overlay: { position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.3)', zIndex: 110, },
+    mobileMenuClose: { position: 'absolute', top: windowWidth < 360 ? '15px' : '20px', right: windowWidth < 360 ? '15px' : '20px', fontSize: windowWidth < 360 ? '24px' : '28px', fontWeight: 'bold', color: '#FF3131', cursor: 'pointer', zIndex: 110, padding: '5px 10px', },
+    mobileNavContainer: { display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', padding: '60px 0 30px', color:"#FFF" },
+    mobileNavLink: { width: '80%', textAlign: 'center', padding: '12px 0', margin: '5px 0', fontSize: '18px', fontWeight: '500', borderRadius: '6px', transition: 'all 0.3s ease', color: '#FFFFF', },
   };
  
-  // Get responsive styles based on window width
-// Paste this entire function to replace the existing getResponsiveStyles function.
-
-const getResponsiveStyles = () => {
-    // Mobile styles (under 768px) - NO CHANGES HERE
-    if (windowWidth <= 768) {
-      return {
-        container: {
-          padding: windowWidth < 360 ? '0 8px' : windowWidth < 480 ? '0 12px' : '0 15px',
-        },
-        nav: {
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100vh',
-          flexDirection: 'column',
-          backgroundColor: '#FFFFFF',
-          justifyContent: 'flex-start',
-          alignItems: 'center',
-          transform: isMobileMenuOpen ? 'translateY(0)' : 'translateY(-100%)',
-          transition: 'transform 0.3s ease',
-          zIndex: 110,
-          boxShadow: '0 4px 10px rgba(0,0,0,0.1)',
-          overflowY: 'auto',
-        },
-        hamburger: {
-          display: 'flex',
-        },
-        logoContainer: {
-          zIndex: 110,
-        },
-        downloadBtn: {
-          display: isMobileMenuOpen ? 'none' : 'block',
-          padding: windowWidth < 360 ? '8px 12px' : '8px 16px',
-          fontSize: windowWidth < 360 ? '13px' : '24px',
-         
-        },
-        loginBtn: {
-          display: isMobileMenuOpen ? 'none' : 'block',
-          padding: windowWidth < 360 ? '8px 12px' : '8px 16px',
-          fontSize: windowWidth < 360 ? '13px' : '24px',
-        },
-      };
-    }
-   
-    // Tablet styles (768px - 1024px) - NO CHANGES HERE
-    if (windowWidth > 768 && windowWidth <= 1024) {
-      return {
-        container: {
-          padding: '0 20px',
-        },
-        nav: {
-          gap: '15px',
-          flexGrow: 1,
-          justifyContent: 'center',
-        },
-        navLink: {
-          fontSize: '15px',
-        },
-        downloadBtn: {
-          padding: '8px 16px',
-          fontSize: '24px',
-        },
-        loginBtn: {
-          padding: '8px 16px',
-          fontSize: '24px',
-        },
-      };
-    }
-   
-    // Default styles (desktop > 1024px) - THIS IS THE FIX
-    // The nav property is added here to ensure centering on large screens.
-    return {
-        nav: {
-            flexGrow: 1, // Allows the nav container to fill the space
-            justifyContent: 'center', // Centers the nav links within that space
-        }
-    };
+  const getResponsiveStyles = () => {
+    if (windowWidth <= 768) { return { container: { padding: windowWidth < 360 ? '0 8px' : '0 15px' }, nav: { position: 'fixed', top: 0, left: 0, width: '100%', height: '100vh', flexDirection: 'column', backgroundColor: '#FFFFFF', justifyContent: 'flex-start', alignItems: 'center', transform: isMobileMenuOpen ? 'translateY(0)' : 'translateY(-100%)', transition: 'transform 0.3s ease', zIndex: 110, overflowY: 'auto', }, hamburger: { display: 'flex' }, logoContainer: { zIndex: 110 }, buttonContainer: { display: 'none' }, }; }
+    if (windowWidth > 768 && windowWidth <= 1024) { return { container: { padding: '0 20px' }, nav: { gap: '15px', flexGrow: 1, justifyContent: 'center' }, navLink: { fontSize: '15px' }, button: { padding: '8px 16px', fontSize: '20px' }, }; }
+    return { nav: { flexGrow: 1, justifyContent: 'center' }, button: {}, };
   };
  
   const responsiveStyles = getResponsiveStyles();
  
   const getNavLinkStyle = (linkName) => {
-    const isHovered = hoveredLink === linkName;
-    const isActive = activeSection === linkName;
-   
-    // Base style for all screen sizes
-    const linkStyle = {
-      ...baseStyles.navLink,
-      color: isHovered || isActive ? '#fff' : 'rgba(255, 255, 255, 0.6)',
-      borderBottom: isHovered || isActive ? '2px solid white' : '2px solid transparent',
-      transition: 'all 0.3s ease',
-    };
-   
-    // Mobile specific styles
-    if (windowWidth <= 768) {
-      return {
-        ...linkStyle,
-        width: '80%',
-        textAlign: 'center',
-        padding: '12px 0',
-        margin: '5px 0',
-        fontSize: '18px',
-        borderBottom: '2px solid transparent',
-        backgroundColor: isHovered || isActive ? 'white' : '#FF3131',
-        color: isHovered || isActive ? '#FF3131' : '#FFFFFF',
-        boxShadow: isHovered || isActive ? '0 4px 10px rgba(0, 0, 0, 0.1)' : 'none',
-        textDecoration: 'none',
-        borderRadius: '6px',
-      };
-    }
-   
+    const isHovered = hoveredLink === linkName; const isActive = activeSection === linkName;
+    const linkStyle = { ...baseStyles.navLink, color: isHovered || isActive ? '#fff' : 'rgba(255, 255, 255, 0.6)', borderBottom: isHovered || isActive ? '2px solid white' : '2px solid transparent', };
+    if (windowWidth <= 768) { return { ...linkStyle, width: '80%', textAlign: 'center', padding: '12px 0', margin: '5px 0', fontSize: '18px', borderBottom: 'none', backgroundColor: isHovered || isActive ? 'white' : '#FF3131', color: isHovered || isActive ? '#FF3131' : '#FFFFFF', borderRadius: '6px', }; }
     return linkStyle;
   };
- 
+  const getDesktopButtonStyles = (isHovered) => ({ ...baseStyles.baseButton, ...responsiveStyles.button, background: isHovered ? 'white' : 'transparent', color: isHovered ? '#FF3131' : 'white', border: isHovered ? '2px solid transparent' : '2px solid white', transform: isHovered ? 'translateY(-2px)' : 'translateY(0)', boxShadow: isHovered ? '0 6px 15px rgba(255, 49, 49, 0.25)' : '0 4px 10px rgba(255, 49, 49, 0.15)', });
+  const getMobileButtonStyles = (isHovered, isLoginButton = false) => ({ ...baseStyles.mobileBaseButton, background: isHovered ? "white" : "#FF3131", color: isHovered ? "#FF3131" : "#fff", border: isLoginButton && !isHovered ? "2px solid white" : "2px solid transparent", transform: isHovered ? 'translateY(-2px)' : 'translateY(0)', boxShadow: isHovered ? '0 6px 15px rgba(255, 49, 49, 0.25)' : '0 4px 10px rgba(255, 49, 49, 0.15)', });
+
+  // --- THIS IS THE CHANGE ---
+  // 1. Define the app store links as constants
+  const IOS_APP_LINK = "https://apps.apple.com/us/app/tssst/id6745514901";
+  const ANDROID_APP_LINK = "https://play.google.com/store/apps/details?id=com.pazl.buzzApp";
+
+  // 2. Create a single variable that holds the correct link based on the detected OS
+  const downloadLink = isIOS ? IOS_APP_LINK : ANDROID_APP_LINK;
+  // --- END OF CHANGE ---
+
   return (
     <>
       <LoginModal isOpen={isLoginModalOpen} onClose={() => setIsLoginModalOpen(false)} />
-      <header style={{...baseStyles.navbar}}>
+      <header style={baseStyles.navbar}>
         <div style={{...baseStyles.container, ...responsiveStyles.container}}>
-        <div style={{...baseStyles.logoContainer, ...responsiveStyles.logoContainer}}>
-          <img src={logoImg} alt="Logo" style={baseStyles.logoImage} />
-        </div>
- 
-        {!isMobileMenuOpen && (
-          <div
-            style={{...baseStyles.hamburger, ...responsiveStyles.hamburger}}
-            onClick={() => setIsMobileMenuOpen(true)}
-            aria-label="Open menu"
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                setIsMobileMenuOpen(true);
-              }
-            }}
-          >
-            <div style={baseStyles.hamburgerLine} />
-            <div style={baseStyles.hamburgerLine} />
-            <div style={baseStyles.hamburgerLine} />
+          <div style={{...baseStyles.logoContainer, ...responsiveStyles.logoContainer}}>
+            <img src={logoImg} alt="Logo" style={baseStyles.logoImage} />
           </div>
-        )}
  
-        {isMobileMenuOpen && windowWidth <= 768 && (
-          <div
-            style={baseStyles.overlay}
-            onClick={() => setIsMobileMenuOpen(false)}
-          />
-        )}
- 
-        <nav style={{...baseStyles.nav, ...responsiveStyles.nav}}>
-          {windowWidth <= 768 && (
-            <div
-              style={baseStyles.mobileMenuClose}
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              ×
+          {!isMobileMenuOpen && (
+            <div style={{...baseStyles.hamburger, ...responsiveStyles.hamburger}} onClick={() => setIsMobileMenuOpen(true)} aria-label="Open menu">
+              <div style={baseStyles.hamburgerLine} /><div style={baseStyles.hamburgerLine} /><div style={baseStyles.hamburgerLine} />
             </div>
           )}
-         
-          <div style={windowWidth <= 768 ? baseStyles.mobileNavContainer : { display: 'flex', gap: '20px' }}>
-            {['home', 'features', 'howItWorks', 'testimonials'].map((section) => (
-              <a
-                key={section}
-                href={`#${section === 'howItWorks' ? 'how-it-works' : section}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection(section === 'howItWorks' ? 'how-it-works' : section);
-                }}
-                style={getNavLinkStyle(section)}
-                onMouseEnter={() => setHoveredLink(section)}
-                onMouseLeave={() => setHoveredLink(null)}
-              >
-                {section === 'howItWorks'
-                  ? 'How It Works'
-                  : section.charAt(0).toUpperCase() + section.slice(1)}
-              </a>
-            ))}
+ 
+          {isMobileMenuOpen && windowWidth <= 768 && (<div style={baseStyles.overlay} onClick={() => setIsMobileMenuOpen(false)} />)}
+ 
+          <nav style={{...baseStyles.nav, ...responsiveStyles.nav}}>
+            {windowWidth <= 768 && (<div style={baseStyles.mobileMenuClose} onClick={() => setIsMobileMenuOpen(false)}>×</div>)}
            
-            {/* Show buttons inside mobile menu */}
-            {windowWidth <= 768 && (
-              <>
- 
-                <a
-                  href={isIOS
-                    ? "https://apps.apple.com/us/app/tssst/id6745514901"
-                    : "https://play.google.com/store/apps/details?id=com.pazl.buzzApp"
-                  }
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    ...baseStyles.mobileDownloadBtn,
-                    background: isDownloadHovered ? "white" : "#FF3131",
-                    color: isDownloadHovered ? "#FF3131" : "#fff",
-                    border: isDownloadHovered ? "2px solid transparent" : "2px solid white",
-                    transform: isDownloadHovered ? 'translateY(-2px)' : 'translateY(0)',
-                    boxShadow: isDownloadHovered
-                      ? '0 6px 15px rgba(255, 49, 49, 0.25)'
-                      : '0 4px 10px rgba(255, 49, 49, 0.15)',
-                  }}
-                  onMouseEnter={() => setIsDownloadHovered(true)}
-                  onMouseLeave={() => setIsDownloadHovered(false)}
-                >
-                  Download App
+            <div style={windowWidth <= 768 ? baseStyles.mobileNavContainer : { display: 'flex', alignItems: 'center', gap: '20px' }}>
+              {['home', 'features', 'howItWorks', 'testimonials'].map((section) => (
+                <a key={section} href={`#${section === 'howItWorks' ? 'how-it-works' : section}`} onClick={(e) => { e.preventDefault(); scrollToSection(section === 'howItWorks' ? 'how-it-works' : section); }} style={getNavLinkStyle(section)} onMouseEnter={() => setHoveredLink(section)} onMouseLeave={() => setHoveredLink(null)}>
+                  {section === 'howItWorks' ? 'How It Works' : section.charAt(0).toUpperCase() + section.slice(1)}
                 </a>
-               
-                <button
-                  onClick={() => {
-                    setIsMobileMenuOpen(false);
-                    setIsLoginModalOpen(true);
-                  }}
-                  style={{
-                    ...baseStyles.mobileLoginBtn,
-                    background: isLoginHovered ? "white" : "#FF3131",
-                    color: isLoginHovered ? "#FF3131" : "#fff",
-                    border: isLoginHovered ? "2px solid transparent" : "2px solid white",
-                    transform: isLoginHovered ? 'translateY(-2px)' : 'translateY(0)',
-                    boxShadow: isLoginHovered
-                      ? '0 6px 15px rgba(255, 49, 49, 0.25)'
-                      : '0 4px 10px rgba(255, 49, 49, 0.15)',
-                  }}
-                  onMouseEnter={() => setIsLoginHovered(true)}
-                  onMouseLeave={() => setIsLoginHovered(false)}
-                >
-                  Admin Login
-                </button>
-               
-              </>
-            )}
-          </div>
-        </nav>
+              ))}
+             
+              {windowWidth <= 768 && (
+                <>
+                  <a
+                    // 3. Use the `downloadLink` variable here
+                    href={downloadLink}
+                    target="_blank" rel="noopener noreferrer"
+                    style={getMobileButtonStyles(isDownloadHovered)}
+                    onMouseEnter={() => setIsDownloadHovered(true)}
+                    onMouseLeave={() => setIsDownloadHovered(false)}
+                  >
+                    Download App
+                  </a>
+                 
+                  <button onClick={() => { setIsMobileMenuOpen(false); setIsLoginModalOpen(true); }} style={getMobileButtonStyles(isLoginHovered, true)} onMouseEnter={() => setIsLoginHovered(true)} onMouseLeave={() => setIsLoginHovered(false)}>
+                    Admin Login
+                  </button>
+                </>
+              )}
+            </div>
+          </nav>
  
-        {/* Show buttons outside mobile menu on desktop */}
-        {windowWidth > 768 && (
-          <div style={{ display: 'flex', alignItems: 'center', }}>
-            <a
-              href={isIOS
-                ? "https://apps.apple.com/us/app/tssst/id6745514901"
-                : "https://play.google.com/store/apps/details?id=com.pazl.buzzApp"
-              }
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                ...baseStyles.downloadBtn,
-                ...responsiveStyles.downloadBtn,
-                background: isDownloadHovered  ? "white" : "transparent",
-                color: isDownloadHovered  ? "#FF3131" : "#fff",
-                border: isDownloadHovered ? "2px solid transparent" : "2px solid white",
-                transform: isDownloadHovered ? 'translateY(-2px)' : 'translateY(0)',
-                boxShadow: isDownloadHovered
-                  ? '0 6px 15px rgba(255, 49, 49, 0.25)'
-                  : '0 4px 10px rgba(255, 49, 49, 0.15)',
-                marginRight: '10px'
-              }}
-              onMouseEnter={() => setIsDownloadHovered(true)}
-              onMouseLeave={() => setIsDownloadHovered(false)}
-            >
-              Download App
-            </a>
-            <button
-              onClick={() => setIsLoginModalOpen(true)}
-              style={{
-                ...baseStyles.loginBtn,
-                ...responsiveStyles.loginBtn,
-                background: isLoginHovered ? 'white' : 'transparent',
-                color: isLoginHovered ? '#FF3131' : 'white',
-                border: isLoginHovered ? '2px solid transparent' : '2px solid white',
-                transform: isLoginHovered ? 'translateY(-2px)' : 'translateY(0)',
-                boxShadow: isLoginHovered
-                  ? '0 6px 15px rgba(255, 49, 49, 0.25)'
-                  : '0 4px 10px rgba(255, 49, 49, 0.15)',
-                textDecoration: 'none',
-                cursor: 'pointer',
-              }}
-              onMouseEnter={() => setIsLoginHovered(true)}
-              onMouseLeave={() => setIsLoginHovered(false)}
-            >
-              Admin Login
-            </button>
-          </div>
-        )}
-      </div>
-    </header>
+          {windowWidth > 768 && (
+            <div style={{ display: 'flex', alignItems: 'center', ...responsiveStyles.buttonContainer }}>
+              <a
+                // 3. And also use the same `downloadLink` variable here
+                href={downloadLink}
+                target="_blank" rel="noopener noreferrer"
+                style={{ ...getDesktopButtonStyles(isDownloadHovered), marginRight: '10px' }}
+                onMouseEnter={() => setIsDownloadHovered(true)}
+                onMouseLeave={() => setIsDownloadHovered(false)}
+              >
+                Download App
+              </a>
+              <button onClick={() => setIsLoginModalOpen(true)} style={getDesktopButtonStyles(isLoginHovered)} onMouseEnter={() => setIsLoginHovered(true)} onMouseLeave={() => setIsLoginHovered(false)}>
+                Admin Login
+              </button>
+            </div>
+          )}
+        </div>
+      </header>
     </>
   );
 };

@@ -54,7 +54,7 @@ const TssstFeatures = () => {
   const cardStyle = {
     backgroundColor: "#ffffff",
     borderRadius: "1.5rem",
-    padding: windowWidth < 480 ? "15px" : windowWidth < 768 ? "18px" : "10px",
+    padding: windowWidth < 480 ? "15px" : windowWidth < 768 ? "18px" : "15px",
     width: windowWidth < 480 ? "100%" : "auto",
     maxWidth: windowWidth < 480 ? "none" : "411px",
     minWidth: windowWidth < 480 ? "none" : "250px",
@@ -67,6 +67,7 @@ const TssstFeatures = () => {
     gap: "0.75rem",
     transition: "box-shadow 0.3s ease-in-out, transform 0.3s ease",
     margin: windowWidth < 480 ? "0.5rem 0" : "0.5rem",
+    // border:"1px solid black"
   };
  
   // Responsive icon box style
