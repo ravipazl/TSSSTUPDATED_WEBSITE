@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import logoImg from '../assets/logo.png';
 import LoginModal from './LoginModal';
  
@@ -12,6 +12,9 @@ const Navbar = () => {
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
   const [isIOS, setIsIOS] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
  
   // Detect iOS device on component mount
   useEffect(() => {
@@ -53,6 +56,8 @@ const Navbar = () => {
   };
  
   useEffect(() => {
+    if (!isHomePage) return; // Only track scroll on home page
+    
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const sections = {
@@ -79,7 +84,7 @@ const Navbar = () => {
  
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isHomePage]);
  
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -91,7 +96,7 @@ const Navbar = () => {
     };
   }, [isMobileMenuOpen, windowWidth]);
  
-  // --- STYLES (Unchanged from previous version) ---
+  // --- STYLES ---
   const baseStyles = {
     navbar: { width: '100%', padding: windowWidth < 360 ? '10px 0' : '15px 0', backgroundColor: '#FF3131', color: '#FFFFFF', position: 'sticky', top: 0, zIndex: 100, boxShadow: '0 2px 8px rgba(0,0,0,0.05)', },
     container: { maxWidth: '100%', margin: '0 auto', padding: '0 20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', },
@@ -118,22 +123,64 @@ const Navbar = () => {
   const responsiveStyles = getResponsiveStyles();
  
   const getNavLinkStyle = (linkName) => {
-    const isHovered = hoveredLink === linkName; const isActive = activeSection === linkName;
-    const linkStyle = { ...baseStyles.navLink, color: isHovered || isActive ? '#fff' : 'rgba(255, 255, 255, 0.6)', borderBottom: isHovered || isActive ? '2px solid white' : '2px solid transparent', };
-    if (windowWidth <= 768) { return { ...linkStyle, width: '80%', textAlign: 'center', padding: '12px 0', margin: '5px 0', fontSize: '18px', borderBottom: 'none', backgroundColor: isHovered || isActive ? 'white' : '#FF3131', color: isHovered || isActive ? '#FF3131' : '#FFFFFF', borderRadius: '6px', }; }
+    const isHovered = hoveredLink === linkName; 
+    const isActive = isHomePage ? activeSection === linkName : false;
+    const isCurrentRoute = !isHomePage && linkName === 'privacy' && location.pathname === '/privacy';
+    
+    const linkStyle = { 
+      ...baseStyles.navLink, 
+      color: isHovered || isActive || isCurrentRoute ? '#fff' : 'rgba(255, 255, 255, 0.6)', 
+      borderBottom: isHovered || isActive || isCurrentRoute ? '2px solid white' : '2px solid transparent', 
+    };
+    
+    if (windowWidth <= 768) { 
+      return { 
+        ...linkStyle, 
+        width: '80%', 
+        textAlign: 'center', 
+        padding: '12px 0', 
+        margin: '5px 0', 
+        fontSize: '18px', 
+        borderBottom: 'none', 
+        backgroundColor: isHovered || isActive || isCurrentRoute ? 'white' : '#FF3131', 
+        color: isHovered || isActive || isCurrentRoute ? '#FF3131' : '#FFFFFF', 
+        borderRadius: '6px', 
+      }; 
+    }
     return linkStyle;
   };
+  
   const getDesktopButtonStyles = (isHovered) => ({ ...baseStyles.baseButton, ...responsiveStyles.button, background: isHovered ? 'white' : 'transparent', color: isHovered ? '#FF3131' : 'white', border: isHovered ? '2px solid transparent' : '2px solid white', transform: isHovered ? 'translateY(-2px)' : 'translateY(0)', boxShadow: isHovered ? '0 6px 15px rgba(255, 49, 49, 0.25)' : '0 4px 10px rgba(255, 49, 49, 0.15)', });
   const getMobileButtonStyles = (isHovered, isLoginButton = false) => ({ ...baseStyles.mobileBaseButton, background: isHovered ? "white" : "#FF3131", color: isHovered ? "#FF3131" : "#fff", border: isLoginButton && !isHovered ? "2px solid white" : "2px solid transparent", transform: isHovered ? 'translateY(-2px)' : 'translateY(0)', boxShadow: isHovered ? '0 6px 15px rgba(255, 49, 49, 0.25)' : '0 4px 10px rgba(255, 49, 49, 0.15)', });
 
-  // --- THIS IS THE CHANGE ---
-  // 1. Define the app store links as constants
+  // Define the app store links as constants
   const IOS_APP_LINK = "https://apps.apple.com/us/app/tssst/id6745514901";
   const ANDROID_APP_LINK = "https://play.google.com/store/apps/details?id=com.pazl.buzzApp";
 
-  // 2. Create a single variable that holds the correct link based on the detected OS
+  // Create a single variable that holds the correct link based on the detected OS
   const downloadLink = isIOS ? IOS_APP_LINK : ANDROID_APP_LINK;
-  // --- END OF CHANGE ---
+
+  const handleNavigation = (linkName, e) => {
+    if (linkName === 'privacy') {
+      // Privacy is a route, let Link handle it
+      if (windowWidth <= 768) {
+        setIsMobileMenuOpen(false);
+      }
+      return;
+    }
+    
+    if (isHomePage) {
+      // On home page, scroll to section
+      e.preventDefault();
+      scrollToSection(linkName === 'howItWorks' ? 'how-it-works' : linkName);
+    } else {
+      // On other pages, navigate to home first, then scroll
+      // This will be handled by the Link component
+      if (windowWidth <= 768) {
+        setIsMobileMenuOpen(false);
+      }
+    }
+  };
 
   return (
     <>
@@ -141,7 +188,9 @@ const Navbar = () => {
       <header style={baseStyles.navbar}>
         <div style={{...baseStyles.container, ...responsiveStyles.container}}>
           <div style={{...baseStyles.logoContainer, ...responsiveStyles.logoContainer}}>
-            <img src={logoImg} alt="Logo" style={baseStyles.logoImage} />
+            <Link to="/">
+              <img src={logoImg} alt="Logo" style={baseStyles.logoImage} />
+            </Link>
           </div>
  
           {!isMobileMenuOpen && (
@@ -156,16 +205,30 @@ const Navbar = () => {
             {windowWidth <= 768 && (<div style={baseStyles.mobileMenuClose} onClick={() => setIsMobileMenuOpen(false)}>×</div>)}
            
             <div style={windowWidth <= 768 ? baseStyles.mobileNavContainer : { display: 'flex', alignItems: 'center', gap: '20px' }}>
-              {['home', 'features', 'howItWorks', 'testimonials'].map((section) => (
-                <a key={section} href={`#${section === 'howItWorks' ? 'how-it-works' : section}`} onClick={(e) => { e.preventDefault(); scrollToSection(section === 'howItWorks' ? 'how-it-works' : section); }} style={getNavLinkStyle(section)} onMouseEnter={() => setHoveredLink(section)} onMouseLeave={() => setHoveredLink(null)}>
-                  {section === 'howItWorks' ? 'How It Works' : section.charAt(0).toUpperCase() + section.slice(1)}
-                </a>
-              ))}
+              {['home', 'features', 'howItWorks', 'testimonials', 'privacy'].map((section) => {
+                const displayName = section === 'howItWorks' ? 'How It Works' : 
+                                  section.charAt(0).toUpperCase() + section.slice(1);
+                const linkTo = section === 'privacy' ? '/privacy' : 
+                              isHomePage ? `#${section === 'howItWorks' ? 'how-it-works' : section}` : 
+                              `/#${section === 'howItWorks' ? 'how-it-works' : section}`;
+                
+                return (
+                  <Link
+                    key={section}
+                    to={linkTo}
+                    onClick={(e) => handleNavigation(section, e)}
+                    style={getNavLinkStyle(section)}
+                    onMouseEnter={() => setHoveredLink(section)}
+                    onMouseLeave={() => setHoveredLink(null)}
+                  >
+                    {displayName}
+                  </Link>
+                );
+              })}
              
               {windowWidth <= 768 && (
                 <>
                   <a
-                    // 3. Use the `downloadLink` variable here
                     href={downloadLink}
                     target="_blank" rel="noopener noreferrer"
                     style={getMobileButtonStyles(isDownloadHovered)}
@@ -186,7 +249,6 @@ const Navbar = () => {
           {windowWidth > 768 && (
             <div style={{ display: 'flex', alignItems: 'center', ...responsiveStyles.buttonContainer }}>
               <a
-                // 3. And also use the same `downloadLink` variable here
                 href={downloadLink}
                 target="_blank" rel="noopener noreferrer"
                 style={{ ...getDesktopButtonStyles(isDownloadHovered), marginRight: '10px' }}
