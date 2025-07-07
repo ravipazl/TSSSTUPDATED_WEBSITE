@@ -17,6 +17,7 @@ import AppRelease from './admin/Apprelease';
 import ConfigSettings from './admin/Configsettings';
 import AdminLayout from './admin/AdminLayout';
 import TssstFeatures from './components/TssstFeatures'
+import Privacy from './components/Privacy';
 
 function MainPage() {
   return (
@@ -48,6 +49,7 @@ function App() {
         <Routes>
           {/* Public routes */}
           <Route path="/" element={<MainPage />} />
+          <Route path='/privacy' element={<Privacy/>} />
           
           {/* Admin routes */}
           <Route path="/admin" element={<AdminRoute component={Dashboard} />} />
