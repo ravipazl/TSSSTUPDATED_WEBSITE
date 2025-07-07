@@ -237,7 +237,7 @@ const Home = () => {
               justifyContent: "center",
             }}>
               <img 
-                src={heart} 
+                src={Starr} 
                 alt="Heart decoration" 
                 style={{
                   width: getResponsiveSize(null, "40px", "45px", "50px"),
@@ -253,7 +253,7 @@ const Home = () => {
               justifyContent: "flex-start",
             }}>
               <img 
-                src={Starr} 
+                src={heart} 
                 alt="Small star decoration" 
                 style={{
                   width: getResponsiveSize(null, "30px", "35px", "40px"),
