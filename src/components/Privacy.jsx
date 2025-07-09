@@ -143,17 +143,17 @@ const PrivacyPolicy = () => {
             <p style={styles.paragraph}>
               Allows high-priority notifications (like calls) to appear fullscreen for better visibility.
             </p>
-            <h3 style={styles.subheading}>Full Screen Intent Permission</h3>
+            {/* <h3 style={styles.subheading}>Full Screen Intent Permission</h3>
             <p style={styles.paragraph}>
             This permission allows our app to display urgent or time-sensitive notifications in full screen, such as incoming call screens or alarm dialogs, even when your device is locked or another app is in use. This helps ensure critical information is delivered without delay.
-            </p>
+            </p> */}
             </div>
 
           <div style={styles.section}>
             <h2 className="heading" style={styles.heading}>Contact Us</h2>
             <p style={styles.paragraph}>
               If you have questions about this Privacy Policy or our data practices, please contact us at{" "}
-              <a href="#" style={{ color: "#FF3131", textDecoration: "underline" }}>
+              <a href="mailto:dev@tssst.com" style={{ color: "#FF3131", textDecoration: "underline" }}>
                 dev@tssst.com
               </a>.
               <p style={{ fontSize: "14px", color: "#888" }}>Last Updated: July 07, 2025</p>
